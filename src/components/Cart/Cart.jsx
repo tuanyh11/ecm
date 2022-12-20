@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Typography, Button, Grid } from "@material-ui/core";
-
+import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
 const Cart = ({ cart }) => {
   const classes = useStyles();
@@ -23,9 +23,7 @@ const Cart = ({ cart }) => {
           {cart.line_items.map((item) => {
             return (
               <Grid item xs={12} sm={4} key={item.id}>
-                <div>{item.name}</div>
-
-                {console.log(item.name)}
+                <CartItem item={item}></CartItem>
               </Grid>
             );
           })}
