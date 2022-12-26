@@ -2,28 +2,43 @@ import React from "react";
 import { Container, Typography, Button, Grid } from "@material-ui/core";
 import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
-const Cart = ({ cart }) => {
+import { Link } from "react-router-dom";
+
+const Cart = ({
+  cart,
+  handleUpdateCartQty,
+  handleRemoveFromCart,
+  handleEmptyCart,
+}) => {
   const classes = useStyles();
-  //   console.log(cart);
 
-  //   const isEmpty = !cart.line_items.length ===0;
-
-  const EmptyCart = () => {
-    <Typography variant="subtitle1">Empty shopping cart</Typography>;
-  };
+  const EmptyCart = () => (
+    // console.log(cart.line_items + "EmptyCart");
+    <Typography variant="subtitle1">
+      Empty shopping cart,
+      <Link to="/" className={classes.link}>
+        Back to Home
+      </Link>
+    </Typography>
+  );
   const FilledCart = () => {
-    // console.log(
-    //   cart.line_items.map((item) => {
-    //     // console.log(item.name);
-    //   })
-    // );
+    // {
+    //   console.log(cart.line_items.length);
+    // }
+
+    console.log(cart.line_items + "fillCart");
+
     return (
       <>
         <Grid container spacing={3}>
           {cart.line_items.map((item) => {
             return (
               <Grid item xs={12} sm={4} key={item.id}>
-                <CartItem item={item}></CartItem>
+                <CartItem
+                  item={item}
+                  onUpdateCartQty={handleUpdateCartQty}
+                  onRemoveFromCart={handleRemoveFromCart}
+                ></CartItem>
               </Grid>
             );
           })}
@@ -39,10 +54,13 @@ const Cart = ({ cart }) => {
               type="button"
               variant="contained"
               color="secondary"
+              onClick={handleEmptyCart}
             >
               Empty Cart
             </Button>
             <Button
+              component={Link}
+              to="/checkout"
               className={classes.checkoutButton}
               size="large"
               type="button"
@@ -57,7 +75,12 @@ const Cart = ({ cart }) => {
     );
   };
   if (!cart.line_items) {
-    return "loading... ";
+    return (
+      <div>
+        {console.log(cart + "loading")}
+        {console.log("loading... ")}
+      </div>
+    );
   }
 
   return (
