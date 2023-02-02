@@ -2,5 +2,6 @@ import Commerce from "@chec/commerce.js";
 
 // console.log(typeof process.env.PUBLIC_URL);
 export const commerce = new Commerce(
-  "pk_test_48969f2dddd8bed9460b5873ddaa1ee0bc5cc5d1bae03"
+  "pk_test_48969e9553b4f0add9faf635f4e691740a906c5890407"
 );
+console.log(process.env);
