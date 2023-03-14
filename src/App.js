@@ -74,7 +74,7 @@ const App = () => {
     fetchCart();
   }, []);
 
-  // console.log(cart.total_items);
+  // console.log(products);
   return (
     <Router>
       <div>
