@@ -62,18 +62,17 @@ const Home = () => {
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
             {products.slice(0, 4).map((item, index) => {
-              {
-                console.log(item);
-              }
+    
 
               return (
                 <ProductCard
                   key={index}
                   img01={item.image.url}
-                  img02={item.image02}
+                  // img02={item.image02}
                   name={item.name}
                   price={item.price.formatted_with_code}
                   slug={item.slug}
+                  id={item.id}
                 />
               );
             })}
@@ -87,15 +86,16 @@ const Home = () => {
         <SectionTitle>sản phẩm mới</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {productData.getProducts(6).map((item, index) => (
+            {products.slice(0, 6).map((item, index) => (
               <ProductCard
-                key={index}
-                img01={item.image01}
-                img02={item.image02}
-                name={item.title}
-                price={Number(item.price)}
-                slug={item.slug}
-              />
+              key={index}
+              img01={item.image.url}
+              // img02={item.image02}
+              name={item.name}
+              price={item.price.formatted_with_code}
+              slug={item.slug}
+              id={item.id}
+            />
             ))}
           </Grid>
         </SectionBody>
@@ -117,15 +117,16 @@ const Home = () => {
         <SectionTitle>phổ biến</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {productData.getProducts(8).map((item, index) => (
+          {products.slice(0, 8).map((item, index) => (
               <ProductCard
-                key={index}
-                img01={item.image01}
-                img02={item.image02}
-                name={item.title}
-                price={Number(item.price)}
-                slug={item.slug}
-              />
+              key={index}
+              img01={item.image.url}
+              // img02={item.image02}
+              name={item.name}
+              price={item.price.formatted_with_code}
+              slug={item.slug}
+              id={item.id}
+            />
             ))}
           </Grid>
         </SectionBody>
