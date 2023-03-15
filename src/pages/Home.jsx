@@ -14,18 +14,22 @@ import productData from "../assets/fake-data/products";
 
 import banner from "../assets/images/banner.png";
 import { commerce } from "../lib/commerce";
+import { useQuery} from "@tanstack/react-query";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
 
   const fectchProducts = async () => {
     const { data } = await commerce.products.list();
-    setProducts(data);
+    return data
   };
 
-  useEffect(() => {
-    fectchProducts();
-  }, []);
+  const {data: products} = useQuery({
+    queryKey: ['product'],
+    queryFn: fectchProducts
+  })
+
+
+  console.log(products)
 
   return (
     <Helmet title="Trang chủ">
@@ -61,7 +65,7 @@ const Home = () => {
         <SectionTitle>top sản phẩm bán chạy trong tuần</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {products.slice(0, 4).map((item, index) => {
+            {products?.slice(0, 4).map((item, index) => {
     
 
               return (
@@ -86,7 +90,7 @@ const Home = () => {
         <SectionTitle>sản phẩm mới</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {products.slice(0, 6).map((item, index) => (
+            {products?.slice(0, 6).map((item, index) => (
               <ProductCard
               key={index}
               img01={item.image.url}
@@ -117,7 +121,7 @@ const Home = () => {
         <SectionTitle>phổ biến</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-          {products.slice(0, 8).map((item, index) => (
+          {products?.slice(0, 8).map((item, index) => (
               <ProductCard
               key={index}
               img01={item.image.url}

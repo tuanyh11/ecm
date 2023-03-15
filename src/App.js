@@ -3,6 +3,7 @@ import { commerce } from "./lib/commerce";
 import { Products, Navbar, Cart, Checkout } from "./components";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
+import './index.css'
 // import Cart1 from "./components/Cart/Cart";
 
 // import EmptyCart from "./components/Cart/Cart";
@@ -25,10 +26,7 @@ const App = () => {
 
   const handleAddToCart = async (productID, quantity) => {
     const item = await commerce.cart.add(productID, quantity);
-    console.log(item + " Add1");
-
     setCart(item);
-    console.log(item + " Add2");
   };
   const handleUpdateCartQty = async (productID, quantity) => {
     const item = await commerce.cart.update(productID, { quantity });

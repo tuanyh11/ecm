@@ -6,41 +6,40 @@ import Grid from "../components/ui/Grid";
 import ProductCard from "../components/ui/ProductCard";
 import ProductView from "../components/ui/ProductView";
 
-import productData from "../assets/fake-data/products";
-import { useState } from "react";
-import { useEffect } from "react";
 import { commerce } from "../lib/commerce";
 import { useParams } from "react-router-dom";
+import { useQueries } from "@tanstack/react-query";
 
-const Product = (props) => {
-  const [product, setProduct] = useState(undefined);
-  const [products, setProducts] = useState([]);
+const Product = () => {
   const id = useParams()?.slug;
 
-  const fetchProduct = async () => {
-    const data = await commerce.products.retrieve(id);
-    const data2 = await commerce.products.list({limit: 4});
-    setProducts(data2.data);
-    setProduct(data);
-  };
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    fetchProduct();
-  }, []);
-
-  console.log(product);
+  const [{data: productDetail}, {data: products}] = useQueries({
+    queries: [
+      {
+        queryKey: ["product-id", id],
+        queryFn: async () => await commerce.products.retrieve(id),
+        refetchOnWindowFocus: false
+      },
+      {
+        queryKey: ["product-related", id],
+        queryFn: async () => await commerce.products.list({ limit: 4 }),
+        refetchOnWindowFocus: false
+      },
+    ]
+  });
 
   return (
-    <Helmet title={product?.title}>
+    <Helmet title={productDetail?.data?.title}>
       <Section>
-        <SectionBody><ProductView product={product}/></SectionBody>
+        <SectionBody>
+          <ProductView product={productDetail} />
+        </SectionBody>
       </Section>
       <Section>
         <SectionTitle>Khám phá thêm</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {products.map((item, index) => (
+            {products?.data?.map((item, index) => (
               <ProductCard
                 key={index}
                 img01={item.image.url}

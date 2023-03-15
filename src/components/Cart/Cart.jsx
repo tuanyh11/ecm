@@ -3,6 +3,8 @@ import { Container, Typography, Button, Grid } from "@material-ui/core";
 import CartItem from "./CartItem/CartItem";
 import useStyles from "./styles";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getCartItems } from "../../api";
 
 const Cart = ({
   cart,
@@ -21,6 +23,15 @@ const Cart = ({
       </Link>
     </Typography>
   );
+
+
+  const {data} = useQuery({
+    queryKey: ['get-cart'],
+    queryFn: getCartItems
+  })
+
+  console.log(data)
+
   const FilledCart = () => {
     // {
     //   console.log(cart.line_items.length);
@@ -30,7 +41,7 @@ const Cart = ({
 
     return (
       <>
-        <Grid container spacing={3}>
+        {/* <Grid container spacing={3}>
           {cart.line_items.map((item) => {
             return (
               <Grid item xs={12} sm={4} key={item.id}>
@@ -70,7 +81,7 @@ const Cart = ({
               Checkout
             </Button>
           </div>
-        </div>
+        </div> */}
       </>
     );
   };
