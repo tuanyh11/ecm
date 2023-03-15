@@ -41,6 +41,9 @@ const Cart = () => {
     queryFn: getCartInfo,
   });
 
+
+//   loading chậm cần cải thiện
+
   const { data, refetch } = useQuery({
     queryKey: ["get-cart"],
     queryFn: getCartItems,
@@ -48,10 +51,6 @@ const Cart = () => {
         refetchCartInfo()
     }
   });
-
-
-
-  console.log(cartInfo);
 
   return (
     <Helmet title="Giỏ hàng">

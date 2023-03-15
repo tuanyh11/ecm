@@ -30,7 +30,6 @@ const Cart = ({
     queryFn: getCartItems
   })
 
-  console.log(data)
 
   const FilledCart = () => {
     // {
@@ -41,7 +40,7 @@ const Cart = ({
 
     return (
       <>
-        {/* <Grid container spacing={3}>
+        <Grid container spacing={3}>
           {cart.line_items.map((item) => {
             return (
               <Grid item xs={12} sm={4} key={item.id}>
@@ -81,7 +80,7 @@ const Cart = ({
               Checkout
             </Button>
           </div>
-        </div> */}
+        </div>
       </>
     );
   };
