@@ -6,8 +6,8 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 
 import "./assets/boxicons-2.0.7/css/boxicons.min.css";
-// import './assets'
 import "./sass/index.scss";
+import './index.css'
 
 import Layout from "./components/ui/Layout";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
