@@ -12,9 +12,9 @@ const CheckBox = props => {
     }
 
     return (
-        <label className="custom-checkbox">
+        <label className="custom-checkbox capitalize">
             <input type="checkbox" ref={inputRef} onChange={onChange} checked={props.checked}/>
-            <span className="custom-checkbox__checkmark">
+            <span className="custom-checkbox__checkmark ">
                 <i className="bx bx-check"></i>
             </span>
             {props.label}

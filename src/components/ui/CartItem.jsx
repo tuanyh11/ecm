@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { handleUpdateCartQty } from "../../api";
 
 const CartItem = (props) => {
-  console.log(props);
+  // console.log(props);
 
   const dispatch = useDispatch();
 

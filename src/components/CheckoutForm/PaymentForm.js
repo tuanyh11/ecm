@@ -24,16 +24,7 @@ const PaymentForm = ({
   console.log(shippingData);
   const handleSubmit = async (event, elements, stripe) => {
     event.preventDefault();
-    // try {
-    //   const cardElement = elements.getElement(CardElement);
 
-    //   const { error, paymentMethod } = await stripe.createPaymentMethod({
-    //     type: "card",
-    //     cardElement,
-    //   });
-    // } catch (error) {
-    //   console.log(error);
-    // }
     if (!stripe || !elements) return;
     const cardElement = elements.getElement(CardElement);
     console.log(1);
@@ -79,7 +70,7 @@ const PaymentForm = ({
           },
         },
       };
-      onCaptureCheckout(checkoutToken.id, orderData);
+    
       nextStep();
     }
   };

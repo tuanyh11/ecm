@@ -7,7 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import { getCartItems } from "../../api";
 
 const Cart = ({
-  cart,
   handleUpdateCartQty,
   handleRemoveFromCart,
   handleEmptyCart,
@@ -25,9 +24,10 @@ const Cart = ({
   );
 
 
-  const {data} = useQuery({
+  const {data: cart} = useQuery({
     queryKey: ['get-cart'],
-    queryFn: getCartItems
+    queryFn: getCartItems,
+    refetchOnWindowFocus: false,
   })
 
 
@@ -36,7 +36,7 @@ const Cart = ({
     //   console.log(cart.line_items.length);
     // }
 
-    console.log(cart.line_items + "fillCart");
+    console.log(cart);
 
     return (
       <>
@@ -84,7 +84,7 @@ const Cart = ({
       </>
     );
   };
-  if (!cart.line_items) {
+  if (!cart?.line_items) {
     return (
       <div>
         {console.log(cart + "loading")}
@@ -100,7 +100,7 @@ const Cart = ({
       <Typography className={classes.title} varaint="h3">
         Your Shopping Cart
       </Typography>
-      {!cart.line_items.length ? <EmptyCart /> : <FilledCart />}
+      {cart?.line_items.length ? <EmptyCart /> : <FilledCart />}
     </Container>
   );
 };
