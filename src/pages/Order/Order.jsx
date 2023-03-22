@@ -294,7 +294,7 @@ const Order = () => {
                       disabled={paymentMethod.value !== "cash"}
                       className={`${
                         paymentMethod.value === "cash" ? "" : "opacity-40"
-                      } flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-primary-600 rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out`}
+                      } flex items-center px-5 py-2.5 font-medium tracking-wide bg-gray-800 text-white capitalize   bg-primary-600 rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out`}
                     >
                       <span className="pl-2 mx-1">Order</span>
                     </button>
@@ -306,7 +306,7 @@ const Order = () => {
                       disabled={paymentMethod.value !== "credit"}
                       className={`${
                         paymentMethod.value === "credit" ? "" : "opacity-40"
-                      } flex items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-primary-600 rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out`}
+                      } flex items-center px-5 py-2.5 font-medium tracking-wide bg-gray-800 text-white capitalize   bg-primary-600 rounded-md hover:bg-gray-800  focus:outline-none focus:bg-gray-900  transition duration-300 transform active:scale-95 ease-in-out`}
                     >
                       <span className="pl-2 mx-1">Payment</span>
                     </button>

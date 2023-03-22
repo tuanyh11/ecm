@@ -96,7 +96,7 @@ const ProductView = (props) => {
   const [selectedColor, setSelectedColor] = useState(null);
 
   return (
-    <div className="product">
+    <div className="">
    
  
 
