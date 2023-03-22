@@ -10,11 +10,15 @@ import { set } from '../../redux/product-modal/productModalSlice'
 import Button from './Button'
 
 import numberWithCommas from '../../utils/numberWithCommas'
+import { useMutation } from '@tanstack/react-query'
+import { handleAddToCart } from '../../api'
 
 
 const ProductCard = props => {
 
     const dispatch = useDispatch()
+
+    const {mutate} = useMutation(handleAddToCart)
     
 
     // console.log(props)
@@ -39,7 +43,7 @@ const ProductCard = props => {
                     size="sm"    
                     icon="bx bx-cart"
                     animate={true}
-                    onClick={() => dispatch(set(props.slug))}
+                    onClick={() => mutate({id: props.id, quantity: 1})}
                 >
                     chọn mua
                 </Button>

@@ -36,10 +36,7 @@
 //     console.log(item + " Update2");
 //   };
 //   const handleRemoveFromCart = async (productID) => {
-//     const cart = await commerce.cart.remove(productID);
-//     console.log(cart + " remove1");
-//     setCart(cart);
-//     console.log(cart + " remove2");
+//      await commerce.cart.remove(productID);
 //   };
 //   const handleEmptyCart = async () => {
 //     const cart = await commerce.cart.empty();

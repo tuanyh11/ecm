@@ -9,8 +9,8 @@ import Button from "../components/ui/Button";
 
 import productData from "../assets/fake-data/products";
 import numberWithCommas from "../utils/numberWithCommas";
-import { useIsFetching, useQuery } from "@tanstack/react-query";
-import { getCartInfo, getCartItems } from "../api";
+import { useIsFetching, useMutation, useQuery } from "@tanstack/react-query";
+import { getCartInfo, getCartItems, handleRemoveFromCart } from "../api";
 import { ClipLoader } from "react-spinners";
 
 const Cart = () => {
@@ -41,7 +41,7 @@ const Cart = () => {
 
   const {
     data: cartInfo,
-    refetch: refetchCartInfo,
+    refetch,
     status
   } = useQuery({
     queryKey: ["get-cart-info"],
@@ -49,19 +49,16 @@ const Cart = () => {
     refetchOnWindowFocus: false
   });
 
+  const {mutate} = useMutation(handleRemoveFromCart)
+
   //   loading chậm cần cải thiện
 
-  const { data, refetch } = useQuery({
-    queryKey: ["get-cart"],
-    queryFn: getCartItems,
-    onSuccess: () => {
-      refetchCartInfo();
-    },
-    refetchOnWindowFocus: false
-    
-  });
+  const handleRemoveItem = (id) => {
+    mutate(id)
+    refetch()
+  }
 
-  console.log(cartInfo)
+
 
   return (
     <Helmet title="Giỏ hàng">
@@ -86,8 +83,8 @@ const Cart = () => {
           </div>
         </div>
         <div className="cart__list">
-          {data?.map((item, index) => (
-            <CartItem item={item} key={index} refetch={refetch} />
+          {cartInfo?.line_items?.map((item, index) => (
+            <CartItem onRemove={handleRemoveItem} item={item} key={index} refetch={refetch} />
           ))}
         </div>
       </div>

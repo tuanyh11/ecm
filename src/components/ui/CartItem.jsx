@@ -13,7 +13,7 @@ import { handleUpdateCartQty } from "../../api";
 
 const CartItem = (props) => {
   // console.log(props);
-
+  const onRemove = props?.onRemove
   const dispatch = useDispatch();
 
   const itemRef = useRef(null);
@@ -41,10 +41,6 @@ const CartItem = (props) => {
   //     dispatch(updateItem({...item, quantity: quantity}))
   // }
 
-  const removeCartItem = () => {
-    console.log("removeCartItem");
-    dispatch(removeItem(item));
-  };
 
   const variant =
     item?.selected_options?.map((item) => item?.option_name) || [];
@@ -89,7 +85,7 @@ const CartItem = (props) => {
           </div>
         </div>
         <div className="cart__item__del">
-          <i className="bx bx-trash" onClick={() => removeCartItem()}></i>
+          <i className="bx bx-trash" onClick={() => onRemove(item.id)}></i>
         </div>
       </div>
     </div>
