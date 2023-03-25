@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 
-import { store } from "./redux/store";
-import { Provider } from "react-redux";
+// import { store } from "./redux/store"
+// import { Provider } from "react-redux";
 
 import "./assets/boxicons-2.0.7/css/boxicons.min.css";
 // import './assets'
@@ -16,14 +16,13 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(
+root.render( 
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Provider store={store}>
+      
         {/* <App/> */}
         <Layout />
         {/* <Test></Test> */}
-      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );

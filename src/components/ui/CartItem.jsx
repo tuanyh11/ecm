@@ -1,20 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
-import { useDispatch } from "react-redux";
-import {
-  updateItem,
-  removeItem,
-} from "../../redux/shopping-cart/cartItemsSlide";
 
-import numberWithCommas from "../../utils/numberWithCommas";
+
 import { Link } from "react-router-dom";
 import { handleUpdateCartQty } from "../../api";
 
 const CartItem = (props) => {
   // console.log(props);
 
-  const dispatch = useDispatch();
 
   const itemRef = useRef(null);
 
@@ -43,7 +37,6 @@ const CartItem = (props) => {
 
   const removeCartItem = () => {
     console.log("removeCartItem");
-    dispatch(removeItem(item));
   };
 
   const variant =

@@ -2,17 +2,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 
-import { useDispatch } from "react-redux";
 
-import { addItem } from "../../redux/shopping-cart/cartItemsSlide";
-import { remove } from "../../redux/product-modal/productModalSlice";
 
 import Button from "./Button";
 
 import { handleAddToCart } from "../../api";
 
 const ProductView = (props) => {
-  const dispatch = useDispatch();
 
   let product = props.product;
 
@@ -64,12 +60,7 @@ const ProductView = (props) => {
         ...product,
         quantity: quantity,
       };
-      if (dispatch(addItem(newItem))) {
-        dispatch(remove());
-        props.history.push("/cart");
-      } else {
-        alert("Fail");
-      }
+     
     }
   };
 

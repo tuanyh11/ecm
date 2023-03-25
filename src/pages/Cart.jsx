@@ -1,43 +1,21 @@
 import React, { useEffect, useState } from "react";
 
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Helmet from "../components/ui/Helmet";
 import CartItem from "../components/ui/CartItem";
 import Button from "../components/ui/Button";
 
-import productData from "../assets/fake-data/products";
-import numberWithCommas from "../utils/numberWithCommas";
 import { useIsFetching, useQuery } from "@tanstack/react-query";
 import { getCartInfo, getCartItems } from "../api";
 import { ClipLoader } from "react-spinners";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cartItems.value);
-
-  const [cartProducts, setCartProducts] = useState(
-    productData.getCartItemsInfo(cartItems)
-  );
 
   const isFetching = useIsFetching()
 
   const [totalProducts, setTotalProducts] = useState(0);
 
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    setCartProducts(productData.getCartItemsInfo(cartItems));
-    setTotalPrice(
-      cartItems.reduce(
-        (total, item) => total + Number(item.quantity) * Number(item.price),
-        0
-      )
-    );
-    setTotalProducts(
-      cartItems.reduce((total, item) => total + Number(item.quantity), 0)
-    );
-  }, [cartItems]);
 
   const {
     data: cartInfo,

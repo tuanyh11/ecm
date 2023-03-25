@@ -10,7 +10,6 @@ import ProductCard from "../components/ui/ProductCard";
 
 import heroSliderData from "../assets/fake-data/hero-slider";
 import policy from "../assets/fake-data/policy";
-import productData from "../assets/fake-data/products";
 
 import banner from "../assets/images/banner.png";
 import { commerce } from "../lib/commerce";

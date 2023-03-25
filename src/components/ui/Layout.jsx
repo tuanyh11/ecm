@@ -6,7 +6,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import ProductViewModal from "./ProductViewModal";
 
-import Router from "../../routes/Routes";
 import Home from "../../pages/Home";
 import Product from "../../pages/Product";
 import Catalog from "../../pages/Catalog";

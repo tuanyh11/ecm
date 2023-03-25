@@ -6,4 +6,4 @@ export const commerce = new Commerce(
 );
 
 
-console.log(process.env);
+// console.log(process.env);

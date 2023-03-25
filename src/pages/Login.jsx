@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link, useHistory, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../api";
 
 const Login = () => {
