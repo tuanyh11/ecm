@@ -3,7 +3,6 @@ import React, { useCallback, useState, useEffect, useRef } from "react";
 import Helmet from "../components/ui/Helmet";
 import CheckBox from "../components/ui/CheckBox";
 
-import category from "../assets/fake-data/category";
 import Button from "../components/ui/Button";
 import InfinityList from "../components/ui/InfinityList";
 import { useLocation } from "react-router-dom";
@@ -33,7 +32,6 @@ const Catalog = () => {
   // console.log(filter);
 
   const [searchTerm, setSearchTerm] = useState("");
-
 
   const filterSelect = (type, checked, item) => {
     if (checked) {
@@ -118,8 +116,8 @@ const Catalog = () => {
 
     if (searchTerm !== "") {
       temp = displayProducts.filter((p) =>
-      p.name.toLowerCase().includes(searchTerm)
-    )
+        p.name.toLowerCase().includes(searchTerm)
+      );
     }
 
     if (filter.category.length > 0) {
@@ -207,8 +205,11 @@ const Catalog = () => {
 
   return (
     <Helmet title="Sản phẩm">
-      <div className="catalog">
-        <div className="catalog__filter" ref={filterRef}>
+      <div className="catalog mt-[150px] lg:mt-[200px] mb-[100px] flex flex-wrap mx-[-15px]">
+        <div
+          className="catalog__filter w-full lg:w-6/12 px-[15px]"
+          ref={filterRef}
+        >
           <div className=" shadow-lg mb-[2rem] overflow-hidden ">
             <div className="relative flex items-center w-full h-14 focus-within:shadow-lg  focus-within:border-[#4267b2] border-2 bg-white overflow-hidden">
               <div className="grid place-items-center h-full w-12 text-black">
@@ -314,20 +315,18 @@ const Catalog = () => {
             </div>
           </div>
         </div>
-        <div className="catalog__filter__toggle">
-          <Button size="sm" onClick={() => showHideFilter()}>
-            bộ lọc
-          </Button>
-        </div>
-        <div className="catalog__content">
-          {displayProducts?.length === 0 ? (
-            <div className=" flex justify-center">
-              <span className="text-lg">Khong co san pham nao</span>
-            </div>
-          ) : (
-            <InfinityList data={displayProducts} />
-          )}
-        </div>
+
+        <div className="catalog__content w-full  lg:w-6/12 px-[15px] ">
+            {displayProducts?.length === 0 ? (
+              <div className=" flex justify-center">
+                <span className="text-lg">Khong co san pham nao</span>
+              </div>
+            ) : (
+              <InfinityList data={displayProducts} />
+            )}
+          </div>
+
+       
       </div>
     </Helmet>
   );

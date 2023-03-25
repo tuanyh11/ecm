@@ -13,129 +13,130 @@ import policy from "../assets/fake-data/policy";
 
 import banner from "../assets/images/banner.png";
 import { commerce } from "../lib/commerce";
-import { useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-
   const fectchProducts = async () => {
     const { data } = await commerce.products.list();
-    return data
+    return data;
   };
 
-  const {data: products} = useQuery({
-    queryKey: ['product'],
-    queryFn: fectchProducts
-  })
+  const { data: products } = useQuery({
+    queryKey: ["product"],
+    queryFn: fectchProducts,
+  });
 
-
-  console.log(products)
+  console.log(products);
 
   return (
-    <Helmet title="Trang chủ">
-      {/* hero slider */}
-      <HeroSlider
-        data={heroSliderData}
-        control={true}
-        auto={true}
-        timeOut={3000}
-      />
-      {/* end hero slider */}
+    <div className="mb-[150px] lg:mt-[200px]">
+      <Helmet title="Trang chủ">
+        {/* hero slider */}
+        <HeroSlider
+          data={heroSliderData}
+          control={true}
+          auto={true}
+          timeOut={3000}
+        />
+        {/* end hero slider */}
 
-      {/* policy section */}
-      <Section>
-        <SectionBody>
-          <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {policy.map((item, index) => (
-              <Link key={index} to="/policy">
-                {/* <PolicyCard
+        {/* policy section */}
+        <Section>
+          <SectionBody>
+            <Grid col={4} mdCol={2} smCol={1} gap={20}>
+              {policy.map((item, index) => (
+                <Link key={index} to="/policy">
+                  {/* <PolicyCard
                                     name={item.name}
                                     description={item.description}
                                     icon={item.icon}
                                 /> */}
-              </Link>
-            ))}
-          </Grid>
-        </SectionBody>
-      </Section>
-      {/* end policy section */}
+                </Link>
+              ))}
+            </Grid>
+          </SectionBody>
+        </Section>
+        {/* end policy section */}
 
-      {/* best selling section */}
-      <Section>
-        <SectionTitle>top sản phẩm bán chạy trong tuần</SectionTitle>
-        <SectionBody>
-          <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {products?.slice(0, 4).map((item, index) => {
-    
+        {/* best selling section */}
+        <Section>
+          <SectionTitle>top sản phẩm bán chạy trong tuần</SectionTitle>
+          <SectionBody>
+            <Grid col={4} mdCol={2} smCol={1} gap={20}>
+              {products?.slice(0, 4).map((item, index) => {
+                return (
+                  <ProductCard
+                    key={index}
+                    img01={item.image.url}
+                    // img02={item.image02}
+                    {...item}
+                    name={item.name}
+                    price={item.price.formatted_with_code}
+                    slug={item.slug}
+                    id={item.id}
+                  />
+                );
+              })}
+            </Grid>
+          </SectionBody>
+        </Section>
+        {/* end best selling section */}
 
-              return (
+        {/* new arrival section */}
+        <Section>
+          <SectionTitle>sản phẩm mới</SectionTitle>
+          <SectionBody>
+            <Grid col={4} mdCol={2} smCol={1} gap={20}>
+              {products?.slice(0, 6).map((item, index) => (
                 <ProductCard
                   key={index}
                   img01={item.image.url}
                   // img02={item.image02}
+                  {...item}
                   name={item.name}
                   price={item.price.formatted_with_code}
                   slug={item.slug}
                   id={item.id}
                 />
-              );
-            })}
-          </Grid>
-        </SectionBody>
-      </Section>
-      {/* end best selling section */}
+              ))}
+            </Grid>
+          </SectionBody>
+        </Section>
+        {/* end new arrival section */}
 
-      {/* new arrival section */}
-      <Section>
-        <SectionTitle>sản phẩm mới</SectionTitle>
-        <SectionBody>
-          <Grid col={4} mdCol={2} smCol={1} gap={20}>
-            {products?.slice(0, 6).map((item, index) => (
-              <ProductCard
-              key={index}
-              img01={item.image.url}
-              // img02={item.image02}
-              name={item.name}
-              price={item.price.formatted_with_code}
-              slug={item.slug}
-              id={item.id}
-            />
-            ))}
-          </Grid>
-        </SectionBody>
-      </Section>
-      {/* end new arrival section */}
+        {/* banner */}
+        <Section>
+          <SectionBody>
+            <Link to="/catalog">
+              <img src={banner} alt="" />
+            </Link>
+          </SectionBody>
+        </Section>
+        {/* end banner */}
 
-      {/* banner */}
-      <Section>
-        <SectionBody>
-          <Link to="/catalog">
-            <img src={banner} alt="" />
-          </Link>
-        </SectionBody>
-      </Section>
-      {/* end banner */}
-
-      {/* popular product section */}
-      <Section>
-        <SectionTitle>phổ biến</SectionTitle>
-        <SectionBody>
-          <Grid col={4} mdCol={2} smCol={1} gap={20}>
-          {products?.slice(0, 8).map((item, index) => (
-              <ProductCard
-              key={index}
-              img01={item.image.url}
-              // img02={item.image02}
-              name={item.name}
-              price={item.price.formatted_with_code}
-              slug={item.slug}
-              id={item.id}
-            />
-            ))}
-          </Grid>
-        </SectionBody>
-      </Section>
-      {/* end popular product section */}
-    </Helmet>
+        {/* popular product section */}
+        <Section>
+          <SectionTitle>phổ biến</SectionTitle>
+          <SectionBody>
+            <Grid col={4} mdCol={2} smCol={1} gap={20}>
+              {products?.slice(0, 8).map((item, index) => (
+                <ProductCard
+                  key={index}
+                  img01={item.image.url}
+                  // img02={item.image02}
+                  {...item}
+                  name={item.name}
+                  price={item.price.formatted_with_code}
+                  slug={item.slug}
+                  id={item.id}
+                />
+              ))}
+            </Grid>
+          </SectionBody>
+        </Section>
+        {/* end popular product section */}
+      </Helmet>
+    </div>
   );
 };
 

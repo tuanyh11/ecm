@@ -13,19 +13,22 @@ const InfinityList = ({ data }) => {
 
   return (
     <div >
-      <Grid col={3} mdCol={2} smCol={1} gap={20}>
+      <div className="md:grid-cols-2 grid-cols-1 grid lg:grid-cols-3 gap-[20px] auto-rows-fr" >
         {data?.map((item, index) => (
-          <ProductCard
-            key={index}
+          <div key={item.id} className=" lg:col-span-1 ">
+            <ProductCard
             img01={item?.image?.url}
             // img02={item.image02}
             name={item.name}
-            price={item.price.formatted_with_code}
             slug={item.slug}
             id={item.id}
+            {...item}
+            price={item.price.formatted_with_code}
+
           />
+          </div>
         ))}
-      </Grid>
+      </div>
     </div>
   );
 };

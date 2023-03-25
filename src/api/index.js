@@ -1,9 +1,9 @@
 import axios from "axios";
 import { commerce } from "../lib/commerce";
 import instanceAxios from "./config";
-export const handleAddToCart = async (data) => {
-  await commerce.cart.add(data.id, data.quantity, {
-    ...Object.fromEntries(data.variant.map((item) => Object.values(item))),
+export const handleAddToCart = async ({id, quantity, variant = []}) => {
+  await commerce.cart.add(id, quantity, {
+    ...Object.fromEntries(variant.map((item) => Object.values(item))),
   });
 };
 
@@ -22,6 +22,7 @@ export const getCartItems = async () => await commerce.cart.contents();
 export const getCartInfo = async () => await commerce.cart.retrieve();
 
 export const getProducts = async () => (await commerce.products.list()).data;
+
 
 export const getProductById = async (id) =>
   await commerce.products.retrieve(id);
