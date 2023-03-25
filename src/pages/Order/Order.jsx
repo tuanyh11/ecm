@@ -212,14 +212,14 @@ const Order = () => {
 
   console.log(token);
   return (
-    <div>
+    <div className="mb-[150px] lg:mt-[200px]">
       <div className="m-auto ">
         <div>
           <button
             type="button"
             className="relative w-full flex justify-center items-center px-5 py-2.5 font-medium tracking-wide text-white capitalize   bg-black rounded-md hover:bg-gray-900  focus:outline-none   transition duration-300 transform active:scale-95 ease-in-out"
           >
-            <span className="pl-2 mx-1">Create new shipping label</span>
+            <span className="pl-2 mx-1">Create new shipping</span>
           </button>
           <div className="flex flex-wrap mx-[-15px] mt-8">
             <div className="w-6/12 px-[15px]">

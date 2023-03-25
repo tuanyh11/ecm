@@ -27,15 +27,8 @@ const Cart = () => {
 
   //   loading chậm cần cải thiện
 
-  const { data, refetch } = useQuery({
-    queryKey: ["get-cart"],
-    queryFn: getCartItems,
-    onSuccess: () => {
-      refetchCartInfo();
-    },
-    refetchOnWindowFocus: false,
-  });
 
+  console.log(cartInfo);
 
 
   return (
@@ -44,7 +37,7 @@ const Cart = () => {
         <div className="cart">
           <div className="cart__info !mt-0">
             <div className="cart__info__txt">
-              <p>Bạn đang có {totalProducts} sản phẩm trong giỏ hàng</p>
+              <p>Bạn đang có {cartInfo.total_items} sản phẩm trong giỏ hàng</p>
               <div className="cart__info__txt__price">
                 <span>Thành tiền:</span>{" "}
                 {isFetching !== 0 ? (
@@ -87,8 +80,8 @@ const Cart = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.map((item, index) => (
-                  <CartItem item={item} key={index}  refetch={refetch} />
+                {cartInfo?.line_items?.map((item, index) => (
+                  <CartItem item={item} key={index}  refetch={refetchCartInfo} />
                 
                 ))}
               </tbody>
