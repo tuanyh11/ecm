@@ -29,7 +29,7 @@ const Home = () => {
   console.log(products);
 
   return (
-    <div className="mb-[150px] lg:mt-[200px]">
+    <div className="mb-[150px] lg:mt-[300px]">
       <Helmet title="Trang chủ">
         {/* hero slider */}
         <HeroSlider

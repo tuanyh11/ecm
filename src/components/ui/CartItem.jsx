@@ -13,6 +13,10 @@ const CartItem = (props) => {
     onSuccess: props?.refetch
   })
 
+  const {mutate: mutateQuantity} = useMutation(handleUpdateCartQty, {
+    onSuccess: props?.refetch
+  })
+
   const [item, setItem] = useState(props.item);
   const [quantity, setQuantity] = useState(props.item.quantity);
 
@@ -24,10 +28,12 @@ const CartItem = (props) => {
   const updateQuantity = (opt) => {
     if (opt === "+") {
       setQuantity(quantity + 1);
-      handleUpdateCartQty(props?.item.id, quantity + 1);
+      mutateQuantity({id: props?.item.id, quantity: quantity + 1});
+      
     } else {
       setQuantity(quantity - 1);
-      handleUpdateCartQty(props?.item.id, quantity - 1);
+      mutateQuantity({id: props?.item.id, quantity: quantity - 1});
+
     }
     props?.refetch();
   };

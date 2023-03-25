@@ -9,6 +9,7 @@ import numberWithCommas from "../../utils/numberWithCommas";
 import { useState } from "react";
 import { handleAddToCart } from "../../api";
 import { useMutation } from "@tanstack/react-query";
+import useStore from "../../store/cart"; 
 
 const ProductCard = (props) => {
 //   let colors = [];
@@ -21,12 +22,17 @@ const ProductCard = (props) => {
 //       sizes = item?.options?.map((c) => ({ ...c, variantId: item.id }));
 //     }
 //   });
+  const {refetch} = useStore()
+
+
 
   const {mutate, isLoading} = useMutation(handleAddToCart, {
     onSuccess: () => {
-        alert("Add to cart successfully")
+      refetch()
     }
   })
+
+  // console.log(refetch);
 
   const addToCart = () => {;
     mutate({

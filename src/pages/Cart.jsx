@@ -9,27 +9,15 @@ import Button from "../components/ui/Button";
 import { useIsFetching, useMutation, useQuery } from "@tanstack/react-query";
 import { getCartInfo, getCartItems, handleRemoveFromCart } from "../api";
 import { ClipLoader } from "react-spinners";
+import useStore from "../store/cart";
 
 const Cart = () => {
-  const isFetching = useIsFetching();
 
-  const [totalProducts, setTotalProducts] = useState(0);
+  const {cart, refetch, isLoading } = useStore()
 
-  const {
-    data: cartInfo,
-    refetch: refetchCartInfo,
-    status,
-  } = useQuery({
-    queryKey: ["get-cart-info"],
-    queryFn: getCartInfo,
-    refetchOnWindowFocus: false,
-  });
+  const isFetching = useIsFetching()
 
-  //   loading chậm cần cải thiện
-
-
-  console.log(cartInfo);
-
+  console.log(isFetching);
 
   return (
     <div className="mb-[150px] lg:mt-[200px]">
@@ -37,13 +25,13 @@ const Cart = () => {
         <div className="cart">
           <div className="cart__info !mt-0">
             <div className="cart__info__txt">
-              <p>Bạn đang có {cartInfo.total_items} sản phẩm trong giỏ hàng</p>
+              <p>Bạn đang có {cart?.total_items} sản phẩm trong giỏ hàng</p>
               <div className="cart__info__txt__price">
                 <span>Thành tiền:</span>{" "}
-                {isFetching !== 0 ? (
+                {isFetching !== 0  ? (
                   <ClipLoader color="#4267b2" />
                 ) : (
-                  <span>{cartInfo?.subtotal?.formatted_with_code}</span>
+                  <span>{cart?.subtotal?.formatted_with_code}</span>
                 )}
               </div>
             </div>
@@ -80,8 +68,8 @@ const Cart = () => {
                 </tr>
               </thead>
               <tbody>
-                {cartInfo?.line_items?.map((item, index) => (
-                  <CartItem item={item} key={index}  refetch={refetchCartInfo} />
+                {cart?.line_items?.map((item, index) => (
+                  <CartItem item={item} key={index}  refetch={refetch} />
                 
                 ))}
               </tbody>

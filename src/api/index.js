@@ -7,8 +7,10 @@ export const handleAddToCart = async ({id, quantity, variant = []}) => {
   });
 };
 
-export const handleUpdateCartQty = async (itemId, quantity) =>
-  await commerce.cart.update(itemId, { quantity });
+export const handleUpdateCartQty = async ({id, quantity}) => {
+  await commerce.cart.update(id, { quantity });
+}
+ 
 
 export const handleRemoveFromCart = async (productID) =>
   await commerce.cart.remove(productID);

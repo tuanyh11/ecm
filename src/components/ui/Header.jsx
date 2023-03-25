@@ -3,6 +3,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { commerce } from "../../lib/commerce";
 
 import logo from "../../assets/images/Logo-2.png";
+import { useQuery } from "@tanstack/react-query";
+import { getCartInfo } from "../../api";
+import useStore from "../../store/cart";
 
 const mainNav = [
   {
@@ -29,6 +32,11 @@ const Header = () => {
 
   const headerRef = useRef(null);
 
+  const {useCartQuery, cart} = useStore()
+
+  useCartQuery()
+  console.log(cart);
+
   useEffect(() => {
     const scrollTop = () => {
       if (
@@ -49,42 +57,6 @@ const Header = () => {
   const menuLeft = useRef(null);
 
   const menuToggle = () => menuLeft.current.classList.toggle("active");
-
-  //   useEffect(() => {
-  //     async function fetchData() {
-  //       const { data: products } = await commerce.products.list();
-
-  //       console.log(products)
-
-  //       async function fetchData() {
-  //         const { data: products } = await commerce.products.list();
-
-  //         const colorOptions = new Set();
-  //         const sizeOptions = new Set();
-
-  //         for (const product of products) {
-  //           const data = await commerce.products.retrieve(product.id);
-
-  //           data.variant_groups.forEach(variant => {
-  //               if (variant.name === 'color') {
-  //                 variant.options.forEach(option => colorOptions.add(option.name))
-
-  //               } else if (variant.name === 'size') {
-  //                 variant.options.forEach(option => sizeOptions.add(option.name))
-  //               }
-  //           });
-
-  //         }
-
-  //         console.log(colorOptions, sizeOptions)
-  //       }
-
-  //       fetchData();
-
-  //     }
-
-  //     fetchData();
-  //   }, []);
 
   return (
     <div className="header" ref={headerRef}>
@@ -125,9 +97,12 @@ const Header = () => {
             </NavLink>
             <NavLink
               to={"/cart"}
-              className="header__menu__item header__menu__right__item"
+              className="header__menu__item header__menu__right__item relative "
             >
               <i className="bx bx-shopping-bag"></i>
+              <span className="w-6 h-6 text-center text-sm  leading-[24px] absolute text-white bg-main rounded-full -top-2 -right-4">
+                {cart?.total_items}
+              </span>
             </NavLink>
             <NavLink
               to={"/login"}
