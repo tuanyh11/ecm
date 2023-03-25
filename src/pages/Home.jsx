@@ -14,22 +14,20 @@ import productData from "../assets/fake-data/products";
 
 import banner from "../assets/images/banner.png";
 import { commerce } from "../lib/commerce";
-import { useQuery} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const Home = () => {
-
   const fectchProducts = async () => {
     const { data } = await commerce.products.list();
-    return data
+    return data;
   };
 
-  const {data: products} = useQuery({
-    queryKey: ['product'],
-    queryFn: fectchProducts
-  })
+  const { data: products } = useQuery({
+    queryKey: ["product"],
+    queryFn: fectchProducts,
+  });
 
-
-  console.log(products)
+  console.log(products);
 
   return (
     <Helmet title="Trang chủ">
@@ -66,8 +64,6 @@ const Home = () => {
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
             {products?.slice(0, 4).map((item, index) => {
-    
-
               return (
                 <ProductCard
                   key={index}
@@ -92,14 +88,14 @@ const Home = () => {
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
             {products?.slice(0, 6).map((item, index) => (
               <ProductCard
-              key={index}
-              img01={item.image.url}
-              // img02={item.image02}
-              name={item.name}
-              price={item.price.formatted_with_code}
-              slug={item.slug}
-              id={item.id}
-            />
+                key={index}
+                img01={item.image.url}
+                // img02={item.image02}
+                name={item.name}
+                price={item.price.formatted_with_code}
+                slug={item.slug}
+                id={item.id}
+              />
             ))}
           </Grid>
         </SectionBody>
@@ -110,7 +106,7 @@ const Home = () => {
       <Section>
         <SectionBody>
           <Link to="/catalog">
-            <img src={banner} alt="" />
+            <img className="banner" src={banner} alt="" />
           </Link>
         </SectionBody>
       </Section>
@@ -121,16 +117,16 @@ const Home = () => {
         <SectionTitle>phổ biến</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={20}>
-          {products?.slice(0, 8).map((item, index) => (
+            {products?.slice(0, 8).map((item, index) => (
               <ProductCard
-              key={index}
-              img01={item.image.url}
-              // img02={item.image02}
-              name={item.name}
-              price={item.price.formatted_with_code}
-              slug={item.slug}
-              id={item.id}
-            />
+                key={index}
+                img01={item.image.url}
+                // img02={item.image02}
+                name={item.name}
+                price={item.price.formatted_with_code}
+                slug={item.slug}
+                id={item.id}
+              />
             ))}
           </Grid>
         </SectionBody>
