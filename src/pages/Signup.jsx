@@ -26,7 +26,7 @@ const SignUp = () => {
   const arrErrors = Object.entries(errors).map(([_, value]) => value);
   console.log(watch("password"));
   return (
-    <div>
+    <div className="mb-[150px] lg:mt-[200px]">
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link
@@ -57,7 +57,7 @@ const SignUp = () => {
                     Your email
                   </label>
                   <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="email@gmail.com"
                     {...register("email", {
                       required: {
@@ -82,7 +82,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Your username"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     {...register("username", {
                       required: {
@@ -109,7 +109,7 @@ const SignUp = () => {
                         value: true,
                       },
                     })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
                 </div>
@@ -124,7 +124,7 @@ const SignUp = () => {
                   <input
                     type="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     {...register("password", {
                       required: {
                         message: "Please enter your password",
@@ -149,7 +149,7 @@ const SignUp = () => {
                     type="password"
                     name="passwordConfirm"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     {...register("passwordConfirm", {
                       validate: (value) =>
@@ -245,7 +245,7 @@ const SignUp = () => {
 
                 <button
                   type="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-main hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign Up
                 </button>
@@ -255,7 +255,7 @@ const SignUp = () => {
                     <Link
                       type="button"
                       to={"/"}
-                      className="focus:outline-none text-white hover:text-white bg-primary-600 hover:bg-primary-600 focus:ring-4 focus:ring-primary-600 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-600 dark:focus:ring-primary-600"
+                      className="focus:outline-none text-white hover:text-white bg-main hover:bg-main focus:ring-4 focus:ring-main font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-main dark:hover:bg-main dark:focus:ring-main"
                     >
                       Home
                     </Link>
@@ -273,7 +273,7 @@ const SignUp = () => {
                   Don’t have an account yet?{" "}
                   <Link
                     to={"/sign_up"}
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    className="font-medium text-main hover:underline dark:text-primary-500"
                   >
                     Sign in
                   </Link>

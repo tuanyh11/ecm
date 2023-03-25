@@ -204,7 +204,8 @@ const Catalog = () => {
   console.log(filter);
 
   return (
-    <Helmet title="Sản phẩm">
+    <div className="mb-[150px] lg:mt-[200px]">
+      <Helmet title="Sản phẩm">
       <div className="catalog mt-[150px] lg:mt-[200px] mb-[100px] flex flex-wrap mx-[-15px]">
         <div
           className="catalog__filter w-full lg:w-6/12 px-[15px]"
@@ -329,6 +330,7 @@ const Catalog = () => {
        
       </div>
     </Helmet>
+    </div>
   );
 };
 

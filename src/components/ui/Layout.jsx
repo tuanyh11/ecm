@@ -18,7 +18,7 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <Header />
-        <div className="pt-[300px] pb-[100px] container m-auto">
+        <div className="container m-auto">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog/:slug" element={<Product />} />

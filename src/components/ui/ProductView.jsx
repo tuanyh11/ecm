@@ -83,7 +83,7 @@ const ProductView = (props) => {
  
 
       <section class="overflow-hidden bg-white py-11 font-poppins dark:bg-gray-800">
-        <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
+        <div class="">
           <div class="flex flex-wrap -mx-4">
             <div class="w-full px-4 md:w-1/2 ">
               <div class="sticky top-0 z-50 overflow-hidden ">
@@ -100,12 +100,12 @@ const ProductView = (props) => {
                       <div key={image?.url} class="w-3/12 p-2 sm:w-1/4">
                         <div
                           onClick={() => setPreviewImg(image?.url)}
-                          class="block border border-blue-300 dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300"
+                          class="block border border-blue-300 dark:border-transparent dark:hover:border-blue-300 hover:border-blue-300 "
                         >
                           <img
                             src={image?.url}
                             alt=""
-                            class="object-cover w-full lg:h-20 "
+                            class="object-cover w-full h-full  "
                           />
                         </div>
                       </div>
@@ -115,12 +115,10 @@ const ProductView = (props) => {
               </div>
             </div>
             <div class="w-full px-4 md:w-1/2 ">
-              <div class="lg:pl-20">
+              <div class="lg:pl-10">
                 <div class="mb-8 ">
-                  <span class="text-lg font-medium text-rose-500 dark:text-rose-200">
-                    New
-                  </span>
-                  <h2 class="max-w-xl mt-2 mb-6 text-2xl font-bold dark:text-gray-400 md:text-4xl">
+               
+                  <h2 class="max-w-xl mt-2 mb-6 text-4xl uppercase font-bold font-bold dark:text-gray-400 md:text-4xl">
                     Shoes
                   </h2>
                   <div

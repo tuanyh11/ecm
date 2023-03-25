@@ -29,7 +29,7 @@ const Login = () => {
 
 
   return (
-    <div>
+    <div className="mb-[150px] lg:mt-[200px]">
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <a
@@ -151,7 +151,7 @@ const Login = () => {
                   </div>}
                 <button
                   type="submit"
-                  className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-main hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign in
                 </button>
@@ -159,7 +159,7 @@ const Login = () => {
                   Don’t have an account yet?{" "}
                   <Link
                     to={"/sign_up"}
-                    className="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                    className="font-medium text-main hover:underline dark:text-primary-500"
                   >
                     Sign up
                   </Link>

@@ -29,7 +29,8 @@ const Product = () => {
   });
 
   return (
-    <Helmet title={productDetail?.data?.title}>
+    <div className="mb-[150px] lg:mt-[200px]">
+      <Helmet title={productDetail?.data?.title}>
       <Section>
         <SectionBody>
           <ProductView product={productDetail} />
@@ -54,6 +55,7 @@ const Product = () => {
         </SectionBody>
       </Section>
     </Helmet>
+    </div>
   );
 };
 

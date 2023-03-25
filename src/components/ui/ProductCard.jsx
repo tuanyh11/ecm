@@ -38,13 +38,13 @@ const ProductCard = (props) => {
   return (
     <div class=" h-full ">
       <div class="bg-white shadow-md  rounded-3xl overflow-hidden  h-full flex flex-col">
-        <div class="relative  w-full lg:mb-0 mb-3 h-[260px] ">
+        <Link to={`/catalog/${props.id}`} class="relative  w-full lg:mb-0 mb-3 h-[260px] ">
           <img
             src={props.img01}
             alt="Just a flower"
             class=" w-full   object-fill  h-full     "
           />
-        </div>
+        </Link>
         <div class=" justify-evenly p-7 flex flex-col flex-1">
           <div className="flex flex-col flex-1">
             <div class="flex flex-wrap  ">
