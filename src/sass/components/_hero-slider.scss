@@ -1,13 +1,34 @@
 .hero-slider {
-  height: 100vh;
+
+  // height: 100vh;
   max-height: 1080px;
   overflow: hidden;
   position: relative;
   margin-bottom: 50px;
   margin-top: calc(#{$header-height} * -1);
+  @media (max-width: 2560px) {
+      height: 850px
+  
+    }
+    @media (max-width: 1880px) {
+      height: 800px
+
+    }
+  @media (max-width: 1440px) {
+    height: 650px
+
+  }
+  @media (max-width: 1024px) {
+    height: 500px
+
+  }
+  @media (max-width: 768px) {
+    height: 600px
+
+  }
 
   @include tablet {
-    margin-top: calc(#{$header-tablet-height} * -1);
+    // margin-top: calc(#{$header-tablet-height} * -1);
   }
 
   @include mobile {
@@ -15,8 +36,11 @@
   }
 
   &__item {
-    @include flex(center, space-between);
-
+    
+    
+    // @include flex(center, space-between);
+    
+    display:grid;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -24,8 +48,8 @@
     inset: 0;
 
     @include tablet {
-      flex-direction: column-reverse;
-      padding-top: $header-tablet-height;
+      // flex-direction: column-reverse;
+      // padding-top: $header-tablet-height;
     }
 
     @include mobile {
@@ -40,6 +64,7 @@
     }
 
     &__info {
+      height: 100px;
       width: 58.33%;
 
       @include tablet {
@@ -82,13 +107,23 @@
       }
 
       &__btn {
+        // padding: 10px;
+        margin-top: 20px;
+        position: absolute;
         overflow: hidden;
+        width: 100px;
+        height: 100px;
+        z-index: 99;
+        @media (max-width: 768px) {
+          display: none;
+      
+        }
       }
 
       &__title > span,
       &__description > span,
       &__btn button {
-        display: block;
+        // display: block;
         transform: translateY(-100%);
         transition: transform 0.5s ease;
       }
@@ -103,23 +138,77 @@
     }
 
     &__image {
-      display: none;
+      // display: none;
       flex-grow: 1;
       position: relative;
-      height: 100%;
+      height: 100% ;
       z-index: 99;
-      pointer-events: none;
+      pointer-events:none;
+    @media (max-width: 2560px) {
+        height: 750px;
+        // top: 60px;
+    
+      }
+    @media (max-width: 1880px) {
+        height: 650px;
+        // top: 40px;
+  
+      }
+    @media (max-width: 1440px) {
+      height: 500px;
+      // top: 10px;
+    }
+    @media (max-width: 1024px) {
+      height: 450px;
+      // top: -25px;
+  
+    }
+    @media (max-width: 768px) {
+      height: 300px;
+      top: 90px;
+  
+    }
 
       @include tablet {
         width: 100%;
-        height: 60%;
+        height: 80%;
         @include flex(center, center);
         flex-grow: unset;
         z-index: 98;
       }
 
       img {
-        height: 100vh;
+        height: 100px;
+
+
+      @media (max-width: 2560px) {
+          height: 700px;
+          top: 50px;
+      
+        }
+      @media (max-width: 1880px) {
+          height: 600px;
+          top: 40px;
+    
+        }
+      @media (max-width: 1440px) {
+        height: 500px;
+        top: 0px;
+      }
+      @media (max-width: 1024px) {
+        height: 400px;
+        top: 40px;
+    
+      }
+      @media (max-width: 768px) {
+        height: 300px;
+        top: 140px;
+    
+      }
+        
+        // height: 73vh;
+       
+        top: 20px;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -127,7 +216,7 @@
         transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
         @include tablet {
-          height: 100%;
+          // height: 100%;
           position: relative;
         }
       }

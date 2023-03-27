@@ -16,7 +16,8 @@ const Login = () => {
   const { mutate, error } = useMutation(signIn, {
     onSuccess: () => {
       // reset()
-      nav.push("/")
+      // nav.push("/")
+      nav("/")
     }
   });
 
