@@ -6,6 +6,7 @@ import logo from "../../assets/images/Logo-2.png";
 import { useQuery } from "@tanstack/react-query";
 import { getCartInfo } from "../../api";
 import useStore from "../../store/cart";
+import useUserInfo from "../../store/userInfo";
 
 const mainNav = [
   {
@@ -33,6 +34,7 @@ const Header = () => {
   const headerRef = useRef(null);
 
   const {useCartQuery, cart} = useStore()
+  const {user} = useUserInfo()
 
   useCartQuery()
   console.log(cart);
@@ -55,6 +57,8 @@ const Header = () => {
   }, []);
 
   const menuLeft = useRef(null);
+
+  console.log(user);
 
   const menuToggle = () => menuLeft.current.classList.toggle("active");
 
@@ -104,12 +108,16 @@ const Header = () => {
                 {cart?.total_items}
               </span>
             </NavLink>
+            {user ? <div className="text-white mx-10 text-lg p-2 bg-black/70 rounded-lg cursor-pointer">{user?.username}</div> : 
+            
+            
             <NavLink
               to={"/login"}
               className="header__menu__item header__menu__right__item"
             >
               <i className="bx bx-user"></i>
             </NavLink>
+            }
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn } from "../api";
+import useUserInfo from "../store/userInfo";
 
 const Login = () => {
 
@@ -13,10 +14,12 @@ const Login = () => {
 
   const nav = useNavigate();
 
+  const {login} = useUserInfo()
+
   const { mutate, error } = useMutation(signIn, {
-    onSuccess: () => {
-      // reset()
-      nav.push("/")
+    onSuccess: ({data}) => {
+      login(data.user);
+      nav('/')
     }
   });
 

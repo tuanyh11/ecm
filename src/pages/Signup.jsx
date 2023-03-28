@@ -14,7 +14,7 @@ const SignUp = () => {
   } = useForm();
 
   const { mutate, isSuccess } = useMutation(signUp, {
-    onSuccess: () => {
+    onSuccess: (data) => {
       reset()
     }
   });
