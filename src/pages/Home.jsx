@@ -26,7 +26,7 @@ const Home = () => {
     queryFn: fectchProducts,
   });
 
-  console.log(products);
+  // console.log(products);
 
   return (
     <div className="mb-[150px] lg:mt-[300px]">
@@ -34,8 +34,10 @@ const Home = () => {
         {/* hero slider */}
         <HeroSlider
           data={heroSliderData}
+                    // data={products}
+
           control={true}
-          auto={true}
+          // auto={true}
           timeOut={3000}
         />
         {/* end hero slider */}

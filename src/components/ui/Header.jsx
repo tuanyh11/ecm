@@ -104,7 +104,7 @@ const Header = () => {
               className="header__menu__item header__menu__right__item relative "
             >
               <i className="bx bx-shopping-bag"></i>
-              <span className="w-6 h-6 text-center text-sm  leading-[24px] absolute text-white bg-main rounded-full -top-2 -right-4">
+              <span className="w-7 h-7 text-center text-sm  leading-[24px] absolute text-white bg-main rounded-full -top-2 -right-4">
                 {cart?.total_items}
               </span>
             </NavLink>
