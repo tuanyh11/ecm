@@ -1,6 +1,21 @@
 .section {
   margin-bottom: 80px;
+  @media (max-width: 1440px) {
+    .section__body{
+      .grid-col-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    }
 
+  }
+  @media (max-width: 1024px) {
+    .section__body{
+      .grid-col-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+
+  }
   & > * ~ * {
     margin-top: 40px;
   }
@@ -14,4 +29,5 @@
     // max-width: 100%;
     width: 100%;
   }
+
 }

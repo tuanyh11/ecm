@@ -27,7 +27,7 @@ const Product = () => {
       },
     ]
   });
-
+// console.log(products);
   return (
     <div className="mb-[150px] lg:mt-[200px]">
       <Helmet title={productDetail?.data?.title}>

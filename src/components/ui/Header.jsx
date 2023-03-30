@@ -37,7 +37,7 @@ const Header = () => {
   const {user} = useUserInfo()
 
   useCartQuery()
-  console.log(cart);
+  // console.log(cart);
 
   useEffect(() => {
     const scrollTop = () => {
@@ -58,7 +58,7 @@ const Header = () => {
 
   const menuLeft = useRef(null);
 
-  console.log(user);
+  // console.log(user);
 
   const menuToggle = () => menuLeft.current.classList.toggle("active");
 

@@ -9,7 +9,7 @@ const InfinityList = ({ data }) => {
  
 
 
-//   console.log(products);
+  console.log(data);
 
   return (
     <div >

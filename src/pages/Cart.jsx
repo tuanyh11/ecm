@@ -17,7 +17,7 @@ const Cart = () => {
 
   const isFetching = useIsFetching()
 
-  console.log(isFetching);
+  // console.log(isFetching);
 
   return (
     <div className="mb-[150px] lg:mt-[200px]">

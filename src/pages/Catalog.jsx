@@ -201,7 +201,7 @@ const Catalog = () => {
     setSearchResults(results);
   }, [searchTerm, products]);
 
-  console.log(filter);
+  // console.log(category);
 
   return (
     <div className="mb-[150px] lg:mt-[200px]">
