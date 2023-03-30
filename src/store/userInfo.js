@@ -5,6 +5,7 @@ import { getCartInfo } from '../api';
 import {persist} from 'zustand/middleware'
 
 const useUserInfo = create(persist((set, get) => ({
+    
     user: null,
     login(userInfo) {
         set((state) => ({user: userInfo}))
@@ -12,6 +13,7 @@ const useUserInfo = create(persist((set, get) => ({
 }), {
     name: 'USER_INFO',
 }));
+console.log(useUserInfo);
 
 export default useUserInfo;
 

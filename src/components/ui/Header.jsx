@@ -108,7 +108,7 @@ const Header = () => {
                 {cart?.total_items}
               </span>
             </NavLink>
-            {user ? <div className="text-white mx-10 text-lg p-2 bg-black/70 rounded-lg cursor-pointer">{user?.username}</div> : 
+            {user ? <div className="text-black ml-10 text-lg p-2 bg-white/70 rounded-lg cursor-pointer">{user?.email}</div> : 
             
             
             <NavLink
