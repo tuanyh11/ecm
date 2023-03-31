@@ -98,6 +98,8 @@ const Order = () => {
     enabled: Boolean(countryCode) && Boolean(subdivisionCode !== "default"),
   });
 
+
+  console.log(listSubdivision);
   // console.log(cartInfo);
 
   const listCountries = Object.entries(countries?.countries || {}).map(
@@ -123,7 +125,6 @@ const Order = () => {
 
   const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0]);
 
-  console.log(token);
 
   const errorsList = Object.entries(errors).map(([k, v]) => (
     <li key={v.message}>{v.message}</li>
@@ -154,7 +155,6 @@ const Order = () => {
       card: cardElement,
     });
 
-    console.log(stripe, elements);
 
     if (error) {
       console.log(error);
