@@ -13,6 +13,8 @@ import { useQueries } from "@tanstack/react-query";
 const Product = () => {
   const id = useParams()?.slug;
 
+  console.log(1234, id);
+
   const [{ data: productDetail }, { data: products }] = useQueries({
     queries: [
       // Truy vấn 1: Lấy chi tiết sản phẩm dựa trên id.
@@ -41,7 +43,7 @@ const Product = () => {
   });
   console.log(products);
   return (
-    <div className="mb-[150px] lg:mt-[200px]">
+    <div className="my-[150px] lg:mt-[200px]">
       <Helmet title={productDetail?.data?.title}>
         <Section>
           <SectionBody>

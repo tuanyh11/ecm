@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -15,6 +15,8 @@ import Cart from "../../pages/Cart";
 import Order from "../../pages/Order/Order";
 import { useQuery } from "@tanstack/react-query";
 import { getCartInfo } from "../../api";
+import useStore from "../../store/cart";
+import useUserInfo from "../../store/userInfo";
 
 const Layout = () => {
   const data = useQuery({
@@ -23,19 +25,25 @@ const Layout = () => {
     refetchOnWindowFocus: false,
   });
 
+  const { user } = useUserInfo();
+  console.log(1, user);
   const routes = useMemo(() => {
     return (
       <>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/:slug" element={<Product />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route
+          path="/login"
+          element={user ? <Navigate to={"/"} /> : <Login />}
+        ></Route>
         <Route path="/login" element={<Login />} />
         <Route path="/sign_up" element={<SignUp />} />
         <Route path="/order" element={<Order />} />
         <Route path="/search" element={<Catalog />} />
       </>
     );
-  }, []);
+  }, [user]);
   return (
     <BrowserRouter>
       <Header {...data} />

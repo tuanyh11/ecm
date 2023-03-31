@@ -19,18 +19,20 @@ const Cart = () => {
   // console.log(isFetching);
 
   return (
-    <div className="mb-[150px] lg:mt-[200px]">
+    <div className="my-[150px] lg:mt-[200px]">
       <Helmet title="Giỏ hàng">
-        <div className="cart">
-          <div className="cart__info !mt-0">
-            <div className="cart__info__txt">
+        <div className="cart flex-wrap mx-[-15px]">
+          <div className="cart__info !mr-0 px-[15px]  !mt-10 lg:!mt-0 !mt-0 w-full lg:w-4/12 order-2 lg:order-1">
+            <div className="cart__info__txt flex-wrap">
               <p>Bạn đang có {cart?.total_items} sản phẩm trong giỏ hàng</p>
-              <div className="cart__info__txt__price">
-                <span>Thành tiền:</span>{" "}
+              <div className="cart__info__txt__price !block">
+                <div className=" w-full">Thành tiền:</div>{" "}
                 {isFetching !== 0 ? (
                   <ClipLoader color="#4267b2" />
                 ) : (
-                  <span>{cart?.subtotal?.formatted_with_code}</span>
+                  <span className="w-full">
+                    {cart?.subtotal?.formatted_with_code}
+                  </span>
                 )}
               </div>
             </div>
@@ -44,34 +46,35 @@ const Cart = () => {
               </Link>
             </div>
           </div>
-
-          <div class="relative overflow-x-auto shadow-md w-full">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-800 ">
-                <tr>
-                  <th scope="col" class="px-6 py-3">
-                    <span class="sr-only">Image</span>
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Product
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Qty
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Price
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    Action
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart?.line_items?.map((item, index) => (
-                  <CartItem item={item} key={index} refetch={refetch} />
-                ))}
-              </tbody>
-            </table>
+          <div className="px-[15px] w-full   overflow-x-auto lg:w-8/12  order-1 lg:order-0">
+            <div class=" shadow-md relative">
+              <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-800 ">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 text-center ">
+                      Image
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center ">
+                      Product
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                      Qty
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                      Price
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cart?.line_items?.map((item, index) => (
+                    <CartItem item={item} key={index} refetch={refetch} />
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </Helmet>

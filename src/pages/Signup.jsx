@@ -262,9 +262,9 @@ const SignUp = () => {
                   </div>
                 )}
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                  Don’t have an account yet?{" "}
+                  Already have an account ?{" "}
                   <Link
-                    to={"/sign_up"}
+                    to={"/login"}
                     className="font-medium text-main hover:underline dark:text-primary-500"
                   >
                     Sign in

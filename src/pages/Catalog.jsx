@@ -193,7 +193,7 @@ const Catalog = () => {
   const [searchResults, setSearchResults] = useState([]);
 
   return (
-    <div className="mb-[150px] lg:mt-[200px]">
+    <div className="my-[150px] lg:mt-[200px]">
       <Helmet title="Sản phẩm">
         <div className="catalog mt-[150px] lg:mt-[200px] mb-[100px] flex flex-wrap mx-[-15px]">
           <div

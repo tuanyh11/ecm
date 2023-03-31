@@ -64,12 +64,15 @@ const Header = () => {
 
   return (
     <div className="header " ref={headerRef}>
-      <div className="container ">
+      <div className="lg:container m-auto h-full">
         <div className="header__menu relative">
           <div className="header__menu__mobile-toggle " onClick={menuToggle}>
             <i className="bx bx-menu-alt-left"></i>
           </div>
-          <div className="header__menu__left" ref={menuLeft}>
+          <div
+            className={`header__menu__left   !z-[999999999999]`}
+            ref={menuLeft}
+          >
             <div className="header__menu__left__close" onClick={menuToggle}>
               <i className="bx bx-chevron-left"></i>
             </div>
@@ -117,15 +120,15 @@ const Header = () => {
                   <i className="bx bx-user"></i>
                 </NavLink>
                 <div className="absolute z-[99999999999999] bg-white hidden group-hover:block after:absolute after:top-0 after:inset-x-0 after:-translate-y-full after:h-8    top-1/2 translate-y-10 right-0">
-                  <div className="z-10   divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                  <div className="z-10   divide-y divide-gray-100 rounded-lg shadow max-w-full dark:bg-gray-700">
                     {user ? (
                       <ul
-                        className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        className="py-2 text-sm text-gray-700 dark:text-gray-200 "
                         aria-labelledby="dropdownHoverButton"
                       >
                         <li>
                           <div className="block line-clamp-1 px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                            {user?.email}
+                            {user?.username}
                           </div>
                         </li>
                         <li>

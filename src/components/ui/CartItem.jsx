@@ -7,7 +7,6 @@ import { useMutation } from "@tanstack/react-query";
 import { ClipLoader } from "react-spinners";
 
 const CartItem = (props) => {
-  // console.log(props);
   const onRemove = props?.onRemove;
   const { mutate, isLoading } = useMutation(handleRemoveFromCart, {
     onSuccess: props?.refetch,
@@ -48,7 +47,7 @@ const CartItem = (props) => {
       </td>
       <td className="px-6 py-4 font-semibold text-gray-900 dark:text-black">
         <div className="">
-          <Link to={`/catalog/${item.slug}`}>{`${item?.name}`}</Link>
+          <Link to={`/catalog/${item.product_id}`}>{`${item?.name}`}</Link>
           <div className=" uppercase">
             {variant.map(
               (item, index) =>
@@ -71,7 +70,7 @@ const CartItem = (props) => {
             <span
               type="number"
               id="first_product"
-              className="bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="bg-gray-50 text-center w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="1"
             >
               {quantity}

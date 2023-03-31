@@ -98,7 +98,6 @@ const Order = () => {
     enabled: Boolean(countryCode) && Boolean(subdivisionCode !== "default"),
   });
 
-
   console.log(listSubdivision);
   // console.log(cartInfo);
 
@@ -125,7 +124,6 @@ const Order = () => {
     watch("shippingOption") && JSON.parse(watch("shippingOption"));
 
   const [paymentMethod, setPaymentMethod] = useState(paymentMethods[0]);
-
 
   const errorsList = Object.entries(errors).map(([k, v]) => (
     <li key={v.message}>{v.message}</li>
@@ -156,7 +154,6 @@ const Order = () => {
       type: "card",
       card: cardElement,
     });
-
 
     if (error) {
       console.log(error);
@@ -265,7 +262,7 @@ const Order = () => {
                 {errorsList.length > 0 && <ErrorForm errorsList={errorsList} />}
                 <InputForm
                   register={(name, validate) => register(name, validate)}
-                  // setValue={setValue}
+                  setValue={setValue}
                   listCountries={listCountries}
                   subdivision={subdivision}
                   token={token}
