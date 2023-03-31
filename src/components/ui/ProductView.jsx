@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import { handleAddToCart } from "../../api";
 import { Link } from "react-router-dom";
+import useStore from "../../store/cart";
 
 const ProductView = (props) => {
   // console.log(props + "chi tiet san pham");
@@ -16,6 +17,8 @@ const ProductView = (props) => {
   const [size, setSize] = useState(undefined);
 
   const [quantity, setQuantity] = useState(1);
+
+  const { refetch } = useStore();
 
   const updateQuantity = (type) => {
     if (type === "plus") {
@@ -39,9 +42,9 @@ const ProductView = (props) => {
     return true;
   };
 
-  const addToCart = () => {
+  const addToCart = async () => {
     check();
-    handleAddToCart({
+    await handleAddToCart({
       id: product.id,
       quantity,
       variant: [color, size].map((item) => ({
@@ -49,6 +52,9 @@ const ProductView = (props) => {
         optionId: item?.id,
       })),
     });
+    window.alert("thêm vào giỏ hàng thành công");
+
+    refetch();
   };
 
   const goToCart = () => {};
@@ -207,12 +213,12 @@ const ProductView = (props) => {
                     </button>
                   </div>
                   <div class="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-                    <button
-                      onClick={() => goToCart()}
+                    <Link
+                      to={"/cart"}
                       class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300"
                     >
                       Go to Cart
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>
