@@ -26,7 +26,7 @@ const Home = () => {
     queryFn: fectchProducts,
   });
 
-  // console.log(products);
+  console.log(products);
 
   return (
     <div className="mb-[150px] lg:mt-[300px]">
@@ -34,7 +34,7 @@ const Home = () => {
         {/* hero slider */}
         <HeroSlider
           data={heroSliderData}
-                    // data={products}
+          // data={products}
 
           control={true}
           // auto={true}
@@ -47,12 +47,12 @@ const Home = () => {
           <SectionBody>
             <Grid col={4} mdCol={2} smCol={1} gap={20}>
               {policy.map((item, index) => (
-                <Link key={index} to="/policy">
-                  {/* <PolicyCard
-                                    name={item.name}
-                                    description={item.description}
-                                    icon={item.icon}
-                                /> */}
+                <Link key={index} to="/catalog">
+                  <PolicyCard
+                    name={item.name}
+                    description={item.description}
+                    icon={item.icon}
+                  />
                 </Link>
               ))}
             </Grid>

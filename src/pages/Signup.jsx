@@ -10,13 +10,13 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    reset
+    reset,
   } = useForm();
 
   const { mutate, isSuccess } = useMutation(signUp, {
     onSuccess: (data) => {
-      reset()
-    }
+      reset();
+    },
   });
 
   const onSubmit = (data) => {
@@ -27,11 +27,11 @@ const SignUp = () => {
   console.log(watch("password"));
   return (
     <div className="mb-[150px] lg:mt-[200px]">
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-gray-50 dark:bg-gray-200">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <Link
             to={"/"}
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-black"
           >
             <img
               className="w-8 h-8 mr-2"
@@ -42,7 +42,7 @@ const SignUp = () => {
           </Link>
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white capitalize">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black capitalize">
                 Sign Up to Create Your account
               </h1>
               <form
@@ -57,7 +57,7 @@ const SignUp = () => {
                     Your email
                   </label>
                   <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="email@gmail.com"
                     {...register("email", {
                       required: {
@@ -71,7 +71,6 @@ const SignUp = () => {
                     })}
                   />
                 </div>
-
                 <div>
                   <label
                     htmlFor="username"
@@ -82,7 +81,7 @@ const SignUp = () => {
                   <input
                     type="text"
                     placeholder="Your username"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     {...register("username", {
                       required: {
@@ -92,7 +91,6 @@ const SignUp = () => {
                     })}
                   />
                 </div>
-
                 <div>
                   <label
                     htmlFor="address"
@@ -109,11 +107,10 @@ const SignUp = () => {
                         value: true,
                       },
                     })}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                   />
                 </div>
-
                 <div>
                   <label
                     htmlFor="password"
@@ -124,7 +121,7 @@ const SignUp = () => {
                   <input
                     type="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     {...register("password", {
                       required: {
                         message: "Please enter your password",
@@ -137,7 +134,6 @@ const SignUp = () => {
                     })}
                   />
                 </div>
-
                 <div>
                   <label
                     htmlFor="passwordConfirm"
@@ -149,7 +145,7 @@ const SignUp = () => {
                     type="password"
                     name="passwordConfirm"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-main focus:border-main block w-full p-2.5 dark:bg-gray-300 dark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required=""
                     {...register("passwordConfirm", {
                       validate: (value) =>
@@ -158,10 +154,9 @@ const SignUp = () => {
                     })}
                   />
                 </div>
-
                 {arrErrors?.length > 0 && (
                   <div
-                    className="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                    className="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-700 dark:text-red-400"
                     role="alert"
                   >
                     <svg
@@ -190,11 +185,10 @@ const SignUp = () => {
                     </div>
                   </div>
                 )}
-
                 {isSuccess && (
                   <div
                     id="alert-border-3"
-                    className="flex p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800"
+                    className="flex p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-600 dark:border-green-800"
                     role="alert"
                   >
                     <svg
@@ -242,14 +236,12 @@ const SignUp = () => {
                     </button>
                   </div>
                 )}
-
                 <button
                   type="submit"
                   className="w-full text-white bg-main hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign Up
                 </button>
-
                 {isSuccess && (
                   <div className="flex  justify-center ">
                     <Link

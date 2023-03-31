@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-
-
 import { handleAddToCart } from "../../api";
 import { Link } from "react-router-dom";
 
 const ProductView = (props) => {
-
+  // console.log(props + "chi tiet san pham");
+  console.log(props);
   let product = props.product;
 
   const [previewImg, setPreviewImg] = useState();
-
 
   const [color, setColor] = useState(undefined);
 
@@ -53,9 +51,7 @@ const ProductView = (props) => {
     });
   };
 
-  const goToCart = () => {
-  
-  };
+  const goToCart = () => {};
 
   const images1 = product?.image.url;
 
@@ -80,9 +76,6 @@ const ProductView = (props) => {
 
   return (
     <div className="">
-   
- 
-
       <section class="overflow-hidden bg-white py-11 font-poppins dark:bg-gray-800">
         <div class="">
           <div class="flex flex-wrap -mx-4">
@@ -118,8 +111,6 @@ const ProductView = (props) => {
             <div class="w-full px-4 md:w-1/2 ">
               <div class="lg:pl-10">
                 <div class="mb-8 ">
-               
-                  
                   <div
                     dangerouslySetInnerHTML={{ __html: product?.description }}
                     class="max-w-lg text-4xl mb-8 font-bold text-gray-700 dark:text-gray-400 capitalize"
@@ -146,7 +137,9 @@ const ProductView = (props) => {
                         onClick={() => setColor({ ...item })}
                         onMouseLeave={() => setSelectedColor(null)}
                         onMouseOver={() => setSelectedColor(item)}
-                        class={`p-1 mb-2 mr-2 border border-transparent hover:border-blue-400 dark:border-gray-800 dark:hover:border-gray-400 ${color?.id === item?.id ? 'border-blue-400' : ''} `}
+                        class={`p-1 mb-2 mr-2 border border-transparent hover:border-blue-400 dark:border-gray-800 dark:hover:border-gray-400 ${
+                          color?.id === item?.id ? "border-blue-400" : ""
+                        } `}
                       >
                         <div
                           class="w-6 h-6"
@@ -167,7 +160,9 @@ const ProductView = (props) => {
                       <button
                         onClick={() => setSize({ ...item })}
                         key={item.id}
-                        class={`py-1 mb-2 uppercase mr-1 border w-11 hover:border-blue-400 ${size?.id === item?.id ? 'border-blue-400' : ''} dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400`}
+                        class={`py-1 mb-2 uppercase mr-1 border w-11 hover:border-blue-400 ${
+                          size?.id === item?.id ? "border-blue-400" : ""
+                        } dark:border-gray-400 hover:text-blue-600 dark:hover:border-gray-300 dark:text-gray-400`}
                       >
                         {item.name}
                       </button>
@@ -182,7 +177,10 @@ const ProductView = (props) => {
                     Quantity
                   </label>
                   <div class="relative flex flex-row w-full h-10 mt-4 bg-transparent rounded-lg">
-                    <button onClick={() => updateQuantity("minus")} class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400">
+                    <button
+                      onClick={() => updateQuantity("minus")}
+                      class="w-20 h-full text-gray-600 bg-gray-300 rounded-l outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 hover:text-gray-700 dark:bg-gray-900 hover:bg-gray-400"
+                    >
                       <span class="m-auto text-2xl font-thin">-</span>
                     </button>
                     <input
@@ -191,19 +189,28 @@ const ProductView = (props) => {
                       placeholder="1"
                       value={quantity}
                     />
-                    <button  onClick={() => updateQuantity("plus")} class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400">
+                    <button
+                      onClick={() => updateQuantity("plus")}
+                      class="w-20 h-full text-gray-600 bg-gray-300 rounded-r outline-none cursor-pointer dark:hover:bg-gray-700 dark:text-gray-400 dark:bg-gray-900 hover:text-gray-700 hover:bg-gray-400"
+                    >
                       <span class="m-auto text-2xl font-thin">+</span>
                     </button>
                   </div>
                 </div>
                 <div class="flex flex-wrap items-center -mx-4 ">
                   <div class="w-full px-4 mb-4 lg:w-1/2 lg:mb-0">
-                    <button  onClick={() => addToCart()} class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                    <button
+                      onClick={() => addToCart()}
+                      class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300"
+                    >
                       Add to Cart
                     </button>
                   </div>
                   <div class="w-full px-4 mb-4 lg:mb-0 lg:w-1/2">
-                    <button onClick={() => goToCart()} class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300">
+                    <button
+                      onClick={() => goToCart()}
+                      class="flex items-center justify-center w-full p-4 text-blue-500 border border-blue-500 rounded-md dark:text-gray-200 dark:border-blue-600 hover:bg-blue-600 hover:border-blue-600 hover:text-gray-100 dark:bg-blue-600 dark:hover:bg-blue-700 dark:hover:border-blue-700 dark:hover:text-gray-300"
+                    >
                       Go to Cart
                     </button>
                   </div>

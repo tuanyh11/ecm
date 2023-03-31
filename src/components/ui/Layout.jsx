@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import ProductViewModal from "./ProductViewModal";
+// import ProductViewModal from "./ProductViewModal";
 
 import Home from "../../pages/Home";
 import Product from "../../pages/Product";
@@ -23,7 +23,7 @@ const Layout = () => {
     refetchOnWindowFocus: false,
   });
 
-  const  routes = useMemo(() => {
+  const routes = useMemo(() => {
     return (
       <>
         <Route path="/" element={<Home />} />
@@ -38,10 +38,10 @@ const Layout = () => {
   }, []);
   return (
     <BrowserRouter>
-      <Header {...data}/>
+      <Header {...data} />
       <div className="container m-auto">
         <Routes>
-          <Route path="/cart" element={<Cart {...data}/>} />
+          <Route path="/cart" element={<Cart {...data} />} />
           {routes}
         </Routes>
       </div>

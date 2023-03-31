@@ -1,5 +1,15 @@
-function InputForm({register, setValue, listCountries, subdivision, token, paymentMethod, setPaymentMethod, paymentMethods}) {
-    return <div className="px-5 pb-5">
+function InputForm({
+  register,
+  setValue,
+  listCountries,
+  subdivision,
+  token,
+  paymentMethod,
+  setPaymentMethod,
+  paymentMethods,
+}) {
+  return (
+    <div className="px-5 pb-5">
       <input
         placeholder="Name"
         {...register("name", {
@@ -8,8 +18,9 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
             message: "Name is required",
           },
         })}
-        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" />
-  
+        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+      />
+
       <input
         placeholder="Email"
         {...register("email", {
@@ -22,7 +33,8 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
             value: /^\S+@\S+$/i,
           },
         })}
-        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" />
+        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+      />
       <input
         placeholder="Address"
         {...register("address", {
@@ -31,7 +43,8 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
             message: "Address is required",
           },
         })}
-        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" />
+        className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+      />
       <div className="flex gap-2">
         <div className="flex-grow w-1/2">
           <input
@@ -42,7 +55,8 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
                 message: "Zip Code is required",
               },
             })}
-            className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" />
+            className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+          />
         </div>
         <div className="flex-grow w-1/2">
           <input
@@ -53,19 +67,22 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
                 message: "City is required",
               },
             })}
-            className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400" />
+            className=" text-black placeholder-gray-600 w-full px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+          />
         </div>
       </div>
-  
+
       <div className="flex gap-2">
         <select
           id="countries"
-          onChange={(e) => e.target.value !== "" &&
+          onChange={(e) =>
+            e.target.value !== "" &&
             (() => {
               setValue("countryCode", e.target.value);
               setValue("subdivisionCode", null);
-            })()}
-          className="text-black w-1/2 placeholder-gray-600  px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+            })()
+          }
+          className="text-black w-1/2 placeholder-gray-600  px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
         >
           <option value={""} selected>
             Choose a country
@@ -79,7 +96,7 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
               message: "State country is required",
             },
           })}
-          className="text-black  placeholder-gray-600 w-1/2 px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+          className="text-black  placeholder-gray-600 w-1/2 px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
         >
           <option value={""} selected>
             Select State or City
@@ -87,7 +104,7 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
           {subdivision}
         </select>
       </div>
-  
+
       <select
         id="countries"
         {...register("shippingOption", {
@@ -96,7 +113,7 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
             message: "Shipping option is required",
           },
         })}
-        className="text-black w-full placeholder-gray-600  px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-800 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
+        className="text-black w-full placeholder-gray-600  px-4 py-2.5 mt-2 text-base   transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-200  focus:border-blueGray-500 focus:bg-white dark:focus:bg-gray-400 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ring-gray-400"
       >
         <option value={""} selected>
           Shipping Option
@@ -107,13 +124,10 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
           </option>
         ))}
       </select>
-  
+
       <div className="mt-5 flex justify-between   mb-4  flex-col">
         {paymentMethods.map((item, i) => (
-          <div
-            key={item.id}
-            className="flex items-center mb-4 cursor-pointer"
-          >
+          <div key={item.id} className="flex items-center mb-4 cursor-pointer">
             <input
               id={`radio-${i}`}
               type="radio"
@@ -121,7 +135,8 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
               value=""
               onChange={() => setPaymentMethod(item)}
               name="disabled-radio"
-              className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 cursor-pointer " />
+              className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 cursor-pointer "
+            />
             <label
               for={`radio-${i}`}
               className="ml-2  font-medium text-black text-lg cursor-pointer"
@@ -131,7 +146,8 @@ function InputForm({register, setValue, listCountries, subdivision, token, payme
           </div>
         ))}
       </div>
-    </div>;
-  }
+    </div>
+  );
+}
 
-  export default InputForm
+export default InputForm;

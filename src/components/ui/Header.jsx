@@ -117,62 +117,51 @@ const Header = () => {
                   <i className="bx bx-user"></i>
                 </NavLink>
                 <div className="absolute hidden group-hover:block after:absolute after:top-0 after:inset-x-0 after:-translate-y-full after:h-8    top-1/2 translate-y-10 right-0">
-                  <div
-                    className="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-                  >
-                    {user ? <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownHoverButton"
-                    >
-                      <li>
-                        <div
-                          
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          {user?.email}
-                        </div>
-                      </li>
-                      <li>
-                        <div
-                          
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Settings
-                        </div>
-                      </li>
-                      <li>
-                        <div
-                          
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Earnings
-                        </div>
-                      </li>
-                      <li>
-                        <div
-                          onClick={() => logout()}
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Sign out
-                        </div>
-                      </li>
-                    </ul> :
-
-                    <ul
-                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
-                      aria-labelledby="dropdownHoverButton"
-                    >
-                      <li>
-                        <Link
-                          to={"/login"}
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                        >
-                          Login Now
-                        </Link>
-                      </li>
-                      
-                
-                    </ul> }
+                  <div className="z-99  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 w-full">
+                    {user ? (
+                      <ul
+                        className="py-2 text-sm text-gray-700 dark:text-gray-400"
+                        aria-labelledby="dropdownHoverButton"
+                      >
+                        <li>
+                          <div className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-end">
+                            {user?.email}
+                          </div>
+                        </li>
+                        <li>
+                          <div className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-end">
+                            Settings
+                          </div>
+                        </li>
+                        <li>
+                          <div className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-end">
+                            Earnings
+                          </div>
+                        </li>
+                        <li>
+                          <div
+                            onClick={() => logout()}
+                            className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-end"
+                          >
+                            Sign out
+                          </div>
+                        </li>
+                      </ul>
+                    ) : (
+                      <ul
+                        className="py-2 text-sm text-gray-800 dark:text-gray-500"
+                        aria-labelledby="dropdownHoverButton"
+                      >
+                        <li>
+                          <Link
+                            to={"/login"}
+                            className="block px-4 py-2 text-lg hover:bg-gray-200 dark:hover:bg-gray-900 dark:hover:text-white"
+                          >
+                            Login Now
+                          </Link>
+                        </li>
+                      </ul>
+                    )}
                   </div>
                 </div>
               </div>

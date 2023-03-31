@@ -31,7 +31,9 @@ const Catalog = () => {
   const [category, setCategory] = useState([]);
   // console.log(filter);
 
+  // search
   const [searchTerm, setSearchTerm] = useState("");
+  console.log(searchTerm);
 
   const filterSelect = (type, checked, item) => {
     if (checked) {
@@ -113,13 +115,13 @@ const Catalog = () => {
 
   const updateProducts = useCallback(() => {
     let temp = products || [];
-
+    // Nếu searchTerm khác rỗng, ta lọc sản phẩm trong temp dựa trên từ khóa tìm kiếm.
     if (searchTerm !== "") {
       temp = displayProducts.filter((p) =>
         p.name.toLowerCase().includes(searchTerm)
       );
     }
-
+    // Nếu filter.category có phần tử, ta lọc sản phẩm trong temp dựa trên danh mục sản phẩm đã được chọn.
     if (filter.category.length > 0) {
       temp = temp.filter((item) =>
         filter.category.some((c) =>
@@ -127,6 +129,8 @@ const Catalog = () => {
         )
       );
     }
+    // Nếu filter.color có phần tử, ta lọc sản phẩm trong temp dựa trên màu sắc đã được chọn.
+    //  Trong quá trình lọc, ta sử dụng variants.options.some() để kiểm tra xem sản phẩm đó có tồn tại màu sắc được chọn hay không.
     if (filter.color.length > 0) {
       console.log(temp);
 
@@ -148,6 +152,8 @@ const Catalog = () => {
         return false;
       });
     }
+    // Nếu filter.size có phần tử, ta lọc sản phẩm trong temp dựa trên kích thước đã được chọn.
+    // Tương tự với màu sắc, ta sử dụng variants.options.some() để kiểm tra xem sản phẩm có tồn tại kích thước được chọn hay không.
     if (filter.size.length > 0) {
       temp = temp.filter((item) => {
         const variants = item.variant_groups?.find((variant) => {
@@ -167,12 +173,15 @@ const Catalog = () => {
         return false;
       });
     }
+    // Cuối cùng, ta cập nhật danh sách sản phẩm được hiển thị bằng cách gọi setDisplayProducts(temp).
     setDisplayProducts(temp);
   }, [filter, products, searchTerm]);
 
   useEffect(() => {
     updateProducts();
   }, [updateProducts]);
+  // console.log(updateProducts);
+  // console.log("updatePr");
 
   const filterRef = useRef(null);
 
@@ -180,144 +189,125 @@ const Catalog = () => {
 
   const loc = useLocation();
 
-  //search from name
   // console.log(productList);
   const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    const query = Object.fromEntries(new URLSearchParams(loc.search).entries());
-    if (Boolean(query?.search)) {
-      inputSearchRef.current.focus();
-    }
-  }, [loc]);
-
-  useEffect(() => {
-    const results = products.filter(
-      (product) =>
-        product.name &&
-        product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    // console.log(results);
-    setSearchResults(results);
-  }, [searchTerm, products]);
-
-  // console.log(category);
 
   return (
     <div className="mb-[150px] lg:mt-[200px]">
       <Helmet title="Sản phẩm">
-      <div className="catalog mt-[150px] lg:mt-[200px] mb-[100px] flex flex-wrap mx-[-15px]">
-        <div
-          className="catalog__filter w-full lg:w-6/12 px-[15px]"
-          ref={filterRef}
-        >
-          <div className=" shadow-lg mb-[2rem] overflow-hidden ">
-            <div className="relative flex items-center w-full h-14 focus-within:shadow-lg  focus-within:border-[#4267b2] border-2 bg-white overflow-hidden">
-              <div className="grid place-items-center h-full w-12 text-black">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              </div>
-
-              <input
-                className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
-                type="text"
-                id="search"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                ref={inputSearchRef}
-                placeholder="Search something.."
-              />
-            </div>
-          </div>
+        <div className="catalog mt-[150px] lg:mt-[200px] mb-[100px] flex flex-wrap mx-[-15px]">
           <div
-            className="catalog__filter__close"
-            onClick={() => showHideFilter()}
+            className="catalog__filter w-full lg:w-6/12 px-[15px]"
+            ref={filterRef}
           >
-            <i className="bx bx-left-arrow-alt"></i>
-          </div>
-          <div className="catalog__filter__widget">
-            <div className="catalog__filter__widget__title">
-              danh mục sản phẩm
-            </div>
-            <div className="catalog__filter__widget__content">
-              {category.map((item, index) => (
-                <div
-                  key={index}
-                  className="catalog__filter__widget__content__item"
-                >
-                  <CheckBox
-                    label={item.name}
-                    onChange={(input) =>
-                      filterSelect("CATEGORY", input.checked, item)
-                    }
-                    checked={filter.category.includes(item.slug)}
-                  />
+            <div className=" shadow-lg mb-[2rem] overflow-hidden ">
+              <div className="relative flex items-center w-full h-14 focus-within:shadow-lg  focus-within:border-[#4267b2] border-2 bg-white overflow-hidden">
+                <div className="grid place-items-center h-full w-12 text-black">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
                 </div>
-              ))}
+                {/* search */}
+                <input
+                  className="peer h-full w-full outline-none text-lg text-gray-700 pr-2"
+                  type="text"
+                  id="search"
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  ref={inputSearchRef}
+                  placeholder="Search something.."
+                />
+                {/* search */}
+              </div>
+            </div>
+            <div
+              className="catalog__filter__close"
+              onClick={() => showHideFilter()}
+            >
+              <i className="bx bx-left-arrow-alt"></i>
+            </div>
+            <div className="catalog__filter__widget">
+              <div className="catalog__filter__widget__title">
+                danh mục sản phẩm
+              </div>
+              <div className="catalog__filter__widget__content">
+                {category.map((item, index) => (
+                  <div
+                    key={index}
+                    className="catalog__filter__widget__content__item"
+                  >
+                    <CheckBox
+                      label={item.name}
+                      onChange={(input) =>
+                        filterSelect("CATEGORY", input.checked, item)
+                      }
+                      checked={filter.category.includes(item.slug)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="catalog__filter__widget">
+              <div className="catalog__filter__widget__title">màu sắc</div>
+              <div className="catalog__filter__widget__content">
+                {colors.map((item, index) => (
+                  <div
+                    key={index}
+                    className="catalog__filter__widget__content__item"
+                  >
+                    <CheckBox
+                      label={item}
+                      onChange={(input) =>
+                        filterSelect("COLOR", input.checked, item)
+                      }
+                      checked={filter.color.includes(item)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="catalog__filter__widget">
+              <div className="catalog__filter__widget__title">kích cỡ</div>
+              <div className="catalog__filter__widget__content">
+                {size.map((item, index) => (
+                  <div
+                    key={index}
+                    className="catalog__filter__widget__content__item"
+                  >
+                    <CheckBox
+                      label={item}
+                      onChange={(input) =>
+                        filterSelect("SIZE", input.checked, item)
+                      }
+                      checked={filter.size.includes(item)}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="catalog__filter__widget">
+              <div className="catalog__filter__widget__content">
+                <Button size="sm" onClick={clearFilter}>
+                  xóa bộ lọc
+                </Button>
+              </div>
             </div>
           </div>
 
-          <div className="catalog__filter__widget">
-            <div className="catalog__filter__widget__title">màu sắc</div>
-            <div className="catalog__filter__widget__content">
-              {colors.map((item, index) => (
-                <div
-                  key={index}
-                  className="catalog__filter__widget__content__item"
-                >
-                  <CheckBox
-                    label={item}
-                    onChange={(input) =>
-                      filterSelect("COLOR", input.checked, item)
-                    }
-                    checked={filter.color.includes(item)}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="catalog__filter__widget">
-            <div className="catalog__filter__widget__title">kích cỡ</div>
-            <div className="catalog__filter__widget__content">
-              {size.map((item, index) => (
-                <div
-                  key={index}
-                  className="catalog__filter__widget__content__item"
-                >
-                  <CheckBox
-                    label={item}
-                    onChange={(input) =>
-                      filterSelect("SIZE", input.checked, item)
-                    }
-                    checked={filter.size.includes(item)}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="catalog__filter__widget">
-            <div className="catalog__filter__widget__content">
-              <Button size="sm" onClick={clearFilter}>
-                xóa bộ lọc
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        <div className="catalog__content w-full  lg:w-6/12 px-[15px] ">
+          <div className="catalog__content w-full  lg:w-6/12 px-[15px] ">
             {displayProducts?.length === 0 ? (
               <div className=" flex justify-center">
                 <span className="text-lg">Khong co san pham nao</span>
@@ -326,10 +316,8 @@ const Catalog = () => {
               <InfinityList data={displayProducts} />
             )}
           </div>
-
-       
-      </div>
-    </Helmet>
+        </div>
+      </Helmet>
     </div>
   );
 };

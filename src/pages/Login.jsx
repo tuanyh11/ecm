@@ -6,39 +6,33 @@ import { signIn } from "../api";
 import useUserInfo from "../store/userInfo";
 
 const Login = () => {
-
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const nav = useNavigate();
 
-  const {login} = useUserInfo()
+  const { login } = useUserInfo();
 
   const { mutate, error } = useMutation(signIn, {
-    onSuccess: ({data}) => {
+    onSuccess: ({ data }) => {
       login(data.user);
-      nav('/')
-    }
+      nav("/");
+    },
   });
 
   const onSubmit = (data) => {
     mutate(data);
   };
 
-  const errorsMessage = Object.keys(error?.response?.data || {}).length === 0 ? error?.message : error?.response?.data
-
-
+  const errorsMessage =
+    Object.keys(error?.response?.data || {}).length === 0
+      ? error?.message
+      : error?.response?.data;
 
   return (
     <div className="mb-[150px] lg:mt-[200px]">
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-gray-50 dark:bg-gray-200">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <a
-
-            className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-          >
+          <a className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-black">
             <img
               className="w-8 h-8 mr-2"
               src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
@@ -46,13 +40,16 @@ const Login = () => {
             />
             Login
           </a>
-          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-500 dark:border-gray-700">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-black">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit(onSubmit)} >
-              <div>
+              <form
+                className="space-y-4 md:space-y-6"
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <div>
                   <label
                     htmlFor="email"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -60,7 +57,7 @@ const Login = () => {
                     Your email
                   </label>
                   <input
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="email@gmail.com"
                     {...register("email", {
                       required: {
@@ -84,7 +81,7 @@ const Login = () => {
                   <input
                     type="password"
                     placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-400 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     {...register("password", {
                       required: {
                         message: "Please enter your password",
@@ -125,8 +122,9 @@ const Login = () => {
                   </a>
                 </div>
 
-                {errorsMessage &&  <div
-                    className="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                {errorsMessage && (
+                  <div
+                    className="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-600 dark:text-red-400"
                     role="alert"
                   >
                     <svg
@@ -148,10 +146,11 @@ const Login = () => {
                         Ensure that these requirements are met:
                       </span>
                       <ul className="mt-1.5 ml-4 list-disc list-inside">
-                          <li>{errorsMessage}</li>
+                        <li>{errorsMessage}</li>
                       </ul>
                     </div>
-                  </div>}
+                  </div>
+                )}
                 <button
                   type="submit"
                   className="w-full text-white bg-main hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main dark:hover:bg-primary-700 dark:focus:ring-primary-800"

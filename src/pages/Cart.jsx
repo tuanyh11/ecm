@@ -12,10 +12,9 @@ import { ClipLoader } from "react-spinners";
 import useStore from "../store/cart";
 
 const Cart = () => {
+  const { cart, refetch, isLoading } = useStore();
 
-  const {cart, refetch, isLoading } = useStore()
-
-  const isFetching = useIsFetching()
+  const isFetching = useIsFetching();
 
   // console.log(isFetching);
 
@@ -28,7 +27,7 @@ const Cart = () => {
               <p>Bạn đang có {cart?.total_items} sản phẩm trong giỏ hàng</p>
               <div className="cart__info__txt__price">
                 <span>Thành tiền:</span>{" "}
-                {isFetching !== 0  ? (
+                {isFetching !== 0 ? (
                   <ClipLoader color="#4267b2" />
                 ) : (
                   <span>{cart?.subtotal?.formatted_with_code}</span>
@@ -48,7 +47,7 @@ const Cart = () => {
 
           <div class="relative overflow-x-auto shadow-md w-full">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-200 dark:text-gray-800 ">
                 <tr>
                   <th scope="col" class="px-6 py-3">
                     <span class="sr-only">Image</span>
@@ -69,14 +68,11 @@ const Cart = () => {
               </thead>
               <tbody>
                 {cart?.line_items?.map((item, index) => (
-                  <CartItem item={item} key={index}  refetch={refetch} />
-                
+                  <CartItem item={item} key={index} refetch={refetch} />
                 ))}
               </tbody>
             </table>
           </div>
-
-        
         </div>
       </Helmet>
     </div>

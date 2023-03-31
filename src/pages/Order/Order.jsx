@@ -47,7 +47,7 @@ const Order = () => {
     stripe: "",
     elements: "",
   });
-
+  // cart info
   const {
     register,
     setValue,
@@ -55,13 +55,12 @@ const Order = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const { data: cartInfo } = useQuery({
     queryKey: ["get-cart-info"],
     queryFn: getCartInfo,
     refetchOnWindowFocus: false,
   });
-
+  //token stripe
   const { data: token } = useQuery({
     queryKey: ["generate-token"],
     queryFn: () => generateToken(cartInfo.id),
@@ -69,6 +68,7 @@ const Order = () => {
     enabled: Boolean(cartInfo),
   });
 
+  //shipping method
   const { data: countries } = useQuery({
     queryKey: ["get-countries"],
     queryFn: () => getListCountries(token.id),
@@ -115,6 +115,7 @@ const Order = () => {
       </option>
     )
   );
+  console.log(subdivision);
 
   const productsCart = cartInfo?.line_items;
 
@@ -143,6 +144,7 @@ const Order = () => {
     },
   });
 
+  // =========================================================== checkout ===========================================================
   const handleCheckoutCredit = async (shippingData) => {
     const { stripe, elements } = stripePaymentMethod;
 
@@ -175,14 +177,16 @@ const Order = () => {
           country: shippingData.countryCode,
         },
 
-        fulfillment: { shipping_method: JSON.parse(watch("shippingOption")).id },
+        fulfillment: {
+          shipping_method: JSON.parse(watch("shippingOption")).id,
+        },
 
         payment: {
           gateway: "stripe",
           stripe: {
             payment_method_id: paymentMethod.id,
           },
-        }
+        },
       };
       onCaptureCheckout({
         checkoutTokenId: token.id,
@@ -191,11 +195,9 @@ const Order = () => {
       // nextStep();
     }
   };
-
+  // =========================================================== order ===========================================================
   const handleCreateOrder = (value) => {
-
     if (paymentMethod.value === "cash") {
-
       mutate({
         email: value.email,
         items: token.line_items,
@@ -203,7 +205,6 @@ const Order = () => {
         total: selectedOptionShipping.price.raw + cartInfo.subtotal.raw,
       });
     } else {
-
       handleCheckoutCredit(value);
     }
   };
@@ -255,12 +256,10 @@ const Order = () => {
             >
               <div className=" bg-white rounded-lg shadow border">
                 <TitleOrderRight />
-
                 {errorsList.length > 0 && <ErrorForm errorsList={errorsList} />}
-
                 <InputForm
                   register={(name, validate) => register(name, validate)}
-                  setValue={setValue}
+                  // setValue={setValue}
                   listCountries={listCountries}
                   subdivision={subdivision}
                   token={token}
@@ -268,6 +267,7 @@ const Order = () => {
                   setPaymentMethod={setPaymentMethod}
                   paymentMethods={paymentMethods}
                 />
+
                 <div className="px-5">
                   {paymentMethod.value === "credit" && (
                     <Elements stripe={stripePromise}>
@@ -275,7 +275,11 @@ const Order = () => {
                         {({ elements, stripe }) => {
                           return (
                             <div>
-                              <CardCredit elements={elements} stripe={stripe} setStripePaymentMethod={setStripePaymentMethod} />
+                              <CardCredit
+                                elements={elements}
+                                stripe={stripe}
+                                setStripePaymentMethod={setStripePaymentMethod}
+                              />
                             </div>
                           );
                         }}
