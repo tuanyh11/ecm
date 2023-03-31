@@ -9,6 +9,9 @@ const useUserInfo = create(persist((set, get) => ({
     user: null,
     login(userInfo) {
         set((state) => ({user: userInfo}))
+    },
+    logout() {
+        set((state) => ({user: null}))
     }
 }), {
     name: 'USER_INFO',

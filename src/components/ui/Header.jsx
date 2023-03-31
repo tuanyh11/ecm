@@ -33,10 +33,10 @@ const Header = () => {
 
   const headerRef = useRef(null);
 
-  const {useCartQuery, cart} = useStore()
-  const {user} = useUserInfo()
+  const { useCartQuery, cart } = useStore();
+  const { user, logout } = useUserInfo();
 
-  useCartQuery()
+  useCartQuery();
   console.log(cart);
 
   useEffect(() => {
@@ -63,9 +63,9 @@ const Header = () => {
   const menuToggle = () => menuLeft.current.classList.toggle("active");
 
   return (
-    <div className="header" ref={headerRef}>
-      <div className="container">
-        <div className="header__menu">
+    <div className="header " ref={headerRef}>
+      <div className="container ">
+        <div className="header__menu relative">
           <div className="header__menu__mobile-toggle " onClick={menuToggle}>
             <i className="bx bx-menu-alt-left"></i>
           </div>
@@ -108,15 +108,74 @@ const Header = () => {
                 {cart?.total_items}
               </span>
             </NavLink>
-            {user ? <div className="text-black ml-10 text-lg p-2 bg-white/70 rounded-lg cursor-pointer">{user?.email}</div> : 
-            
-            
-            <NavLink
-              to={"/login"}
-              className="header__menu__item header__menu__right__item"
-            >
-              <i className="bx bx-user"></i>
-            </NavLink>
+            {
+              <div className="ml-10 group ">
+                <NavLink
+                  to={"/login"}
+                  className="header__menu__item header__menu__right__item"
+                >
+                  <i className="bx bx-user"></i>
+                </NavLink>
+                <div className="absolute hidden group-hover:block after:absolute after:top-0 after:inset-x-0 after:-translate-y-full after:h-8    top-1/2 translate-y-10 right-0">
+                  <div
+                    className="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                  >
+                    {user ? <ul
+                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownHoverButton"
+                    >
+                      <li>
+                        <div
+                          
+                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          {user?.email}
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          
+                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Settings
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          
+                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Earnings
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          onClick={() => logout()}
+                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Sign out
+                        </div>
+                      </li>
+                    </ul> :
+
+                    <ul
+                      className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                      aria-labelledby="dropdownHoverButton"
+                    >
+                      <li>
+                        <Link
+                          to={"/login"}
+                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                        >
+                          Login Now
+                        </Link>
+                      </li>
+                      
+                
+                    </ul> }
+                  </div>
+                </div>
+              </div>
             }
           </div>
         </div>
