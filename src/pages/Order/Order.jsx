@@ -205,6 +205,12 @@ const Order = () => {
     } else {
 
       handleCheckoutCredit(value);
+      mutate({
+        email: value.email,
+        items: token.line_items,
+        otherInfo: token,
+        total: selectedOptionShipping.price.raw + cartInfo.subtotal.raw,
+      });
     }
   };
 

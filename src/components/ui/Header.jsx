@@ -116,9 +116,9 @@ const Header = () => {
                 >
                   <i className="bx bx-user"></i>
                 </NavLink>
-                <div className="absolute hidden group-hover:block after:absolute after:top-0 after:inset-x-0 after:-translate-y-full after:h-8    top-1/2 translate-y-10 right-0">
+                <div className="absolute z-[99999999999999] bg-white hidden group-hover:block after:absolute after:top-0 after:inset-x-0 after:-translate-y-full after:h-8    top-1/2 translate-y-10 right-0">
                   <div
-                    className="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                    className="z-10   divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
                   >
                     {user ? <ul
                       className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -127,7 +127,7 @@ const Header = () => {
                       <li>
                         <div
                           
-                          className="block px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                          className="block line-clamp-1 px-4 py-2 text-lg hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                         >
                           {user?.email}
                         </div>
