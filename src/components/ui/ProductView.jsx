@@ -74,8 +74,9 @@ const ProductView = (props) => {
     }
   });
 
-  console.log(color, size);
+  // console.log(color, size);
   const [selectedColor, setSelectedColor] = useState(null);
+  // console.log(product?.inventory);
 
   return (
     <div className="">
@@ -118,12 +119,10 @@ const ProductView = (props) => {
               <div class="lg:pl-10">
                 <div class="mb-8 ">
                
-                  <h2 class="max-w-xl mt-2 mb-6 text-4xl uppercase font-bold font-bold dark:text-gray-400 md:text-4xl">
-                    Shoes
-                  </h2>
+                  
                   <div
                     dangerouslySetInnerHTML={{ __html: product?.description }}
-                    class="max-w-md mb-8 text-gray-700 dark:text-gray-400 capitalize"
+                    class="max-w-lg text-4xl mb-8 font-bold text-gray-700 dark:text-gray-400 capitalize"
                   ></div>
                   <p class="inline-block mb-8 text-4xl font-bold text-gray-700 dark:text-gray-400 ">
                     <span>{product?.price?.formatted_with_code}</span>

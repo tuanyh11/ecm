@@ -27,7 +27,7 @@ const useStore = create((set) => ({
       queryFn: async () => cartData,
       onSuccess: ({ data, ...rest}) => {
         set((state) => ( {...state, ...rest}));
-        console.log(data);
+        // console.log(data);
       },
       enabled: Boolean(data)
     })
